@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-08-22T01:14:57.934868+00:00",
+  "status": "complete_qc_passed",
+  "models": 12,
+  "specifications": [
+    "expanding",
+    "rolling7"
+  ],
+  "support": [
+    "separate",
+    "common"
+  ],
+  "fixed_effects": [
+    "market_id",
+    "calendar_hour_utc"
+  ],
+  "cluster": "event_id CRV1",
+  "conditional_nonzero_interpretation": "descriptive outcome-selected model"
+}

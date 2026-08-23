@@ -1,0 +1,30 @@
+\section{Regression Robustness Appendix}
+\label{sec:regression-appendix}
+
+The final v5 robustness evidence is reported alongside the primary estimates in
+Section~\ref{sec:robustness-checks}: strict-1 alignment, the active-market
+subsample, pre-trade placebos, post-trade horizons, event-by-time fixed effects,
+and the market-fixed-effects logit comparison. Earlier full-window P99 tables
+are omitted because their classification uses information that was not yet
+available on each trade date and is not the dissertation's final estimand.
+
+\section{Supplementary Behavioural and Market-Integrity Methods}
+\label{sec:supplementary-integrity-methods}
+
+\input{sections/rq3_market_integrity_methodology}
+
+\section{Supplementary Behavioural and Market-Integrity Results}
+\label{sec:supplementary-integrity-results}
+
+\input{sections/rq3_market_integrity_results}
+
+\input{sections/appendix_wallet_methods}
+
+\subsection{Continuous cumulative-volume robustness for the whale-wallet analysis}
+\label{sec:continuous-wallet-volume-appendix}
+
+Section~\ref{sec:whale-wallet-results} reports the percentile-based WH1--WH4 decisions. As a threshold-free robustness check, whale status is replaced with the within-day standardised log of each wallet's cumulative gross USDC observed strictly before that day, and the same four sequence and price outcomes are re-estimated with this continuous score and its interaction with large-trade status, jointly Holm-adjusted across six focal tests.
+
+Among ordinary actions, a one-standard-deviation increase in prior wallet scale is associated with a 0.1181 higher probability of another action within five minutes, a 0.0353 higher conditional same-direction probability, and a 0.0602 higher probability of an opposite action within 60 minutes (all $p<0.001$); prior capital deployment therefore has a continuous activity gradient rather than an association confined to a top-one-per-cent cutoff.
+
+The large-by-wallet-scale interactions for these three sequence outcomes are negative ($-0.0605$, $-0.0343$, and $-0.0395$; all Holm-adjusted $p<0.001$): higher-scale wallets are more active, but the large--ordinary difference narrows with wallet scale. By contrast, conditional favourable opposite execution has a positive interaction of 0.0191 (Holm-adjusted $p=0.0151$), and price-update incidence has a positive interaction of 0.00678 (Holm-adjusted $p=0.0309$). The directional-price interaction is small and negative ($-0.000027$, Holm-adjusted $p=0.0341$). These results reinforce the activity and favourable-execution components of WH2 and WH4 but do not support a uniformly positive large-by-wallet-scale price synergy; WH3 remains unsupported under this continuous specification, consistent with the percentile-based result in Section~\ref{sec:whale-wallet-results}.

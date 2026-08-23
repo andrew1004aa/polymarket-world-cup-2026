@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-08-22T01:52:18.162320+00:00",
+  "status": "complete_qc_passed",
+  "models": 18,
+  "samples": [
+    "STRICT0_ALL",
+    "STRICT1_ALL",
+    "STRICT0_ACTIVE"
+  ],
+  "specifications": [
+    "expanding",
+    "rolling7"
+  ],
+  "fixed_effects": [
+    "market_id",
+    "calendar_hour_utc"
+  ],
+  "cluster": "event_id CRV1",
+  "timing": "baseline strictly before t; flow [t,t+1); outcome first price at/after t+5"
+}

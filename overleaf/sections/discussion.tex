@@ -1,0 +1,69 @@
+\section{Discussion}
+\label{sec:discussion}
+
+This chapter interprets the results through the microstructure, informed-trading, prediction-market, and manipulation theories reviewed in Section~\ref{sec:literature-review}. The evidence is organised into three distinct layers: explanatory association, out-of-sample prediction, and market-integrity screening. These layers answer related but non-equivalent questions. Every interpretation below is conditional and observational; none establishes a causal price effect, private information, trader identity, intent, or manipulation.
+
+\subsection{Large trades and short-horizon price adjustment}
+
+H1 confirms that signed total flow is associated with short-horizon price change. H2 then separates flow from unusually large trades from ordinary flow. Using information available only before classification, the expanding-history and rolling seven-day specifications estimate large-minus-ordinary five-minute contrasts of 0.000082 and 0.000081. These effects are statistically precise but economically small per unit of signed flow. Their similarity across two past-only definitions shows that the result is not driven by using future trades to classify earlier observations.
+
+The positive contrast is consistent with the broad prediction in \citet{kyle1985continuous}, \citet{glostenmilgrom1985bidask}, and \citet{easleyohara1987tradesize} that signed trading can convey information or liquidity demand to which prices respond. It does not, however, distinguish informed trading from a mechanical response to execution or a common response to public information. As \citet{dellavedova2026execution} illustrate, price association, directional accuracy, and execution quality should not be collapsed into one latent concept of trader skill.
+
+Temporal ordering provides a stronger diagnostic than the contemporaneous coefficient alone. Estimates at minus fifteen, minus five, and minus one minute are approximately zero after Holm adjustment. Positive large-minus-ordinary associations emerge at plus one, plus five, and plus fifteen minutes. The plus-thirty-minute estimate is not robust across both threshold definitions. The primary contrast also survives event-by-minute and event-by-five-minute fixed effects. These tests reduce concern that persistent pre-trends or shocks common to all contracts in the same match and interval wholly explain H2. They do not eliminate information arriving within the same narrow interval, so the estimates remain associative rather than causal.
+
+\subsection{Update incidence and functional-form sensitivity}
+\label{sec:discussion-margin}
+
+The extensive-margin evidence is model-sensitive and therefore cannot carry the dissertation's principal mechanism claim. Linear probability models estimate significant large-minus-ordinary differences in the probability of any five-minute update: 0.00641 under expanding history and 0.00605 under rolling history. In contrast, market-fixed-effects logit models find that both large and ordinary flow are positively associated with update odds while their differences are effectively zero and statistically insignificant ($p=0.986$ and $p=0.511$). The conditional-magnitude analysis is also outcome-selected because it excludes intervals with no price change.
+
+The defensible conclusion is consequently narrower than an extensive-margin mechanism story. H2 is robust as a directional association, but whether large trades have a distinct relationship with the occurrence of any price update depends on functional form. This divergence is substantively useful: it prevents a statistically convenient specification from being treated as direct evidence of a particular market mechanism.
+
+\subsection{Persistence, forecast accuracy, and public information}
+
+H3a's average continuation finding and the absence of a systematic reversal pattern weaken, but do not rule out, a simple temporary-pressure account of the kind considered by \citet{allengale1992manipulation} and documented in other settings by \citet{aggarwalwu2006manipulation} and \citet{griffinshams2020untethered}. H3b's null Brier-score result means that continuation cannot be interpreted as evidence that large trades improve eventual forecast accuracy. Read together with the lead--lag evidence, these findings are consistent with contemporaneous information arrival affecting both trades and prices. They do not identify private information, trader skill, or intent.
+
+RQ4 adds phase context. The flow--price association varies non-monotonically before kickoff and strengthens overall after kickoff, while the relative large-trade premium does not change consistently by phase. Live match events may raise the relevance of public information for all traders rather than selectively benefiting unusually large trades. Because independently timestamped news and match-event covariates are not included, this remains an interpretation rather than an identified mechanism.
+
+\subsection{Behavioural and market-integrity evidence}
+\label{sec:discussion-integrity}
+
+The wallet analyses separate individual trade size from observed address behaviour. Prior activity, prior cumulative volume, and unusually large individual trades are not interchangeable. Past-only wallet classifications and continuous cumulative-volume robustness checks therefore provide heterogeneity evidence without assuming that a wallet is an institution, a unique beneficial owner, or a ``whale'' in any intrinsic sense. Sequence continuation and favourable opposite-action results are compatible with persistent execution, position management, or trading skill, but they do not establish a push-and-reverse strategy or realised profit.
+
+The supervised machine-learning analysis uses information observed during the first five minutes after the initiating trade to predict full price reversal between approximately minute 5 and minute 30; it does not predict at trade initiation and does not predict manipulation. In every outer split, the F1 threshold is selected from inner out-of-fold predictions using only outer-training data and is frozen before held-out evaluation. PR--AUC is primary because reversal is imbalanced; F1 is secondary and threshold-dependent. Improved prediction means that combinations of flow, concentration, sequence, price, and timing features contain out-of-sample information about reversal. It does not mean that the model has learned manipulation.
+
+The unsupervised analysis has a different purpose. Transparent rules and Isolation Forest rank observations that are unusual in a multivariate feature space. The contextual case review then asks whether match information, boundary prices, or ordinary trading dynamics can explain each retained case. Remaining unexplained cases are potential integrity-review candidates, not confirmed violations. This separation between prediction, anomaly discovery, and adjudication is central to the dissertation's behavioural-finance contribution.
+
+\begin{table}[htbp]
+\centering
+\caption{Synthesis of the principal evidence}
+\label{tab:channel-synthesis}
+\small
+\begin{tabular}{p{0.30\textwidth}p{0.27\textwidth}p{0.33\textwidth}}
+\toprule
+Evidence & What it supports & What it does not establish \\
+\midrule
+Past-only H2 contrast & Small directional post-trade association & Causal impact or superior information \\
+Zero pre-leads; positive post-lags to 15 minutes & Temporal ordering consistent with price response & Exclusion of simultaneous public information \\
+Event-by-time fixed effects & Robustness to common match-time shocks & Control of contract-specific news \\
+LPM--logit disagreement & Functional-form sensitivity of update incidence & A settled extensive-margin mechanism \\
+No Brier-score improvement & Caution about informational superiority & Absence of all trader skill \\
+Out-of-sample reversal prediction & Predictive behavioural structure & Identification of manipulation \\
+Unsupervised anomaly ranking & Reproducible review prioritisation & Confirmation of misconduct \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Limitations}
+\label{sec:discussion-limits}
+
+Several features of the data set a hard boundary on what these results can establish. First, the design is observational. Event-by-time fixed effects absorb shocks common to contracts within the same match and interval, but no independently timestamped public-news series is observed; sufficiently local information arrival can therefore affect both flow and price. Second, wallet addresses need not correspond one-to-one with beneficial owners, so wallet-level variables measure observed address behaviour rather than identity or intent. Third, P99 is an operational definition of unusually large relative trade size rather than a theoretically unique boundary. The expanding and rolling past-only constructions remove look-ahead from the primary classification, but threshold choice remains a modelling decision. Fourth, the setting is one unusually high-attention tournament, which limits external validity. These limitations bound the associative conclusions without negating their reproducibility.
+
+\subsection{Implications}
+
+For individual traders, an unusually large trade should not by itself be read as a reliable signal of superior private information. Large flow is followed by a small directional association, but the data do not show better eventual forecast accuracy, and the update-incidence interpretation is not invariant to functional form.
+
+For platforms and other market operators, monitoring should combine transparent rules with multivariate ranking, incorporate match phase and boundary prices, and retain human contextual review. A static size threshold or model score should prioritise review rather than determine that a violation occurred.
+
+For policymakers, the dissertation supplies a reproducible evidentiary framework rather than a verdict on market integrity. It demonstrates how association, prediction, and anomaly discovery can be combined without assuming trader identity or intent. The results neither estimate the prevalence of manipulation nor establish that unusually large trades are benign or harmful.
+
+For researchers, the main lesson is that past-only classification, temporal ordering, fixed-effect granularity, and functional form materially affect what can be inferred from a headline association. Explanatory regression, supervised prediction, and unsupervised screening should remain explicitly separated because each answers a different research question.

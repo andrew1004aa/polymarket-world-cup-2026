@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-08-22T12:07:16.921414+00:00",
+  "status": "PASS",
+  "sample_rows": 5843,
+  "events": 104,
+  "conclusion": "All reported F1 thresholds were selected from inner out-of-fold predictions within outer-training data; held-out labels were used only for final evaluation.",
+  "checks": {
+    "linear_thresholds": {
+      "models_audited": 20,
+      "maximum_threshold_difference": 0.0
+    },
+    "linear_oof": {
+      "specifications": 5,
+      "rows_per_specification": 5843,
+      "event_overlap_across_outer_folds": 0
+    },
+    "tree_thresholds": {
+      "models_audited": 20,
+      "maximum_threshold_difference": 0.0
+    },
+    "tree_oof": {
+      "specifications": 4,
+      "rows_per_specification": 5843,
+      "event_overlap_across_outer_folds": 0
+    },
+    "ablation_thresholds": {
+      "models_audited": 15,
+      "maximum_threshold_difference": 0.0
+    },
+    "ablation_oof": {
+      "specifications": 3,
+      "rows_per_specification": 5843,
+      "event_overlap_across_outer_folds": 0
+    },
+    "chronological": {
+      "models_audited": 4,
+      "event_overlap": 0,
+      "train_events": 78,
+      "test_events": 26
+    },
+    "source_code": {
+      "linear": {
+        "path": "scripts/run_v4_rq3_ml_baselines.py",
+        "sha256": "78d56d875d5f87b8417040feb5bfce1eaec4ffe7c104fc5505f94ca56f03a815"
+      },
+      "trees": {
+        "path": "scripts/run_v4_rq3_ml_trees.py",
+        "sha256": "91a720255006efbad4ef5ba90f5e38f28701bf40d74de879867cc2bbd5c6cab7"
+      },
+      "ablation": {
+        "path": "scripts/run_v4_rq3_rf_ablation.py",
+        "sha256": "ee119fa0890a7d054cf60eb277d3c37473949d964524d1e598f7b84df1abbacb"
+      },
+      "chronological": {
+        "path": "scripts/run_v4_rq3_chronological_validation.py",
+        "sha256": "ca4a58fefbb4cd4c8db9b1788a25fdd3a17d42a261c6c2ff004a8d8a56589272"
+      }
+    }
+  }
+}

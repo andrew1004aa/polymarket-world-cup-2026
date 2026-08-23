@@ -1,0 +1,6 @@
+# Data collection and construction environment
+requests>=2.32,<3
+pandas==3.0.5
+pyarrow==25.0.0
+numpy==2.3.5
+

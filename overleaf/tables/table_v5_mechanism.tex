@@ -1,0 +1,34 @@
+\begin{table}[htbp]
+\centering
+\caption{Update incidence and conditional non-zero price change}
+\label{tab:v5-mechanism}
+\small
+\begin{tabular}{llcc}
+\toprule
+Outcome and model & Quantity reported & Expanding history & Rolling seven day \\
+\midrule
+Any update: LPM & Large-flow coefficient & 0.012176*** & 0.011847*** \\
+ & Ordinary-flow coefficient & 0.005770*** & 0.005794*** \\
+ & Large minus ordinary & 0.006406*** & 0.006052*** \\
+\addlinespace
+Any update: market-FE logit & Large-flow coefficient & 0.171711*** & 0.165123*** \\
+ & Ordinary-flow coefficient & 0.171457*** & 0.175519*** \\
+ & Large minus ordinary & 0.000254 & -0.010396 \\
+ & Equality-test $p$-value & 0.986 & 0.511 \\
+\addlinespace
+Non-zero price change: OLS & Large minus ordinary & 0.000210*** & 0.000194*** \\
+ & Selected observations & 17,994 & 17,270 \\
+\bottomrule
+\end{tabular}
+\par\vspace{3pt}
+\begin{minipage}{0.96\textwidth}
+\footnotesize Notes: The first panel is a linear probability model for whether
+any five-minute price update occurs. Logit coefficients in the second panel are
+on the link scale and are not directly comparable in magnitude with LPM
+coefficients; the focal test is equality of the large- and ordinary-flow
+coefficients within each logit model. The final panel conditions on observing a
+non-zero price change and is outcome-selected, so it is descriptive rather than
+a primary mechanism test. All models use strict-0 timing, the stated controls,
+market fixed effects, and event-clustered covariance. *** $p<0.01$.
+\end{minipage}
+\end{table}

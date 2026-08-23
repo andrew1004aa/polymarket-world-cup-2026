@@ -1,0 +1,107 @@
+\subsection{Extended market-integrity methodology}
+\label{sec:rq3-integrity-methodology}
+
+The preceding regressions estimate average flow--price associations, but an
+integrity assessment also requires separating concentrated activity, temporary
+price pressure, predictability, and unusual individual episodes. The supplementary
+market-integrity analysis therefore uses four complementary designs, labelled
+MI1--MI3 plus contextual screening to distinguish them from the main H1, H2, H3a, H3b and RQ4.
+The first two retain fixed-effects inference;
+the third evaluates out-of-sample prediction; and the fourth ranks observations
+for contextual review. None of these designs has a verified manipulation label,
+so anomaly scores and case flags are not interpreted as proof of misconduct.
+
+\subsubsection{MI1: concentration and price adjustment}
+
+For each market-minute, observed-wallet gross-USDC shares are used to construct
+the Herfindahl--Hirschman index (HHI), the largest-wallet share, and the combined
+share of the three largest wallets. MI1 tests whether greater within-minute
+concentration is associated with the absolute five-minute change in the
+YES-equivalent probability. The primary model includes market and unique UTC
+calendar-hour fixed effects, with standard errors clustered by FIFA match
+event. Controls include the baseline YES price, absolute lagged 30-minute price
+change, lagged volume, minutes to kickoff, current gross volume, trade count,
+and absolute net-flow imbalance.
+
+Because 96.31\% of five-minute price changes equal zero, a two-part
+specification distinguishes the extensive margin from the intensive margin.
+The first part is a linear-probability model for whether any price update occurs;
+the second conditions on a non-zero update and models its absolute magnitude.
+The conditional second part is outcome-selected and is interpreted as a
+descriptive robustness check rather than a causal decomposition.
+
+\subsubsection{MI2: concentrated pressure and reversal}
+
+MI2 restricts attention to 19,256 pre-kickoff match-market minutes in which net
+flow has a non-zero direction and the five-minute price movement is positive in
+that direction. The focal regressor is wallet HHI interacted with absolute
+net-flow imbalance. Partial reversal occurs when the later cumulative
+directional movement is smaller than the initial five-minute movement; full
+reversal occurs when the later directional movement is negative. Separate
+linear-probability models are estimated at 15, 30, and 60 minutes with market
+and calendar-hour fixed effects and event-clustered covariance. Six primary
+interaction tests are adjusted jointly using Holm's method.
+
+\subsubsection{MI3: out-of-sample reversal prediction}
+
+MI3 asks whether behavioural and concentration information observed during the
+first five minutes after a P99 trade adds out-of-sample information about full
+directional reversal between approximately minute 5 and minute 30. It is not a
+prediction made at the instant of the initiating trade. The
+pre-kickoff match sample contains 5,843 events, including 748 reversals, grouped
+within 104 matches. A baseline feature set (baseline probability and the initial five-minute
+directional move) is compared with an expanded set that adds the initiating
+trade's size, within-minute wallet concentration (largest- and top-three-wallet
+share and HHI), absolute flow imbalance, and follower-wallet flow over the
+following five minutes. Logistic
+regression, elastic net, histogram gradient boosting, and random forest are
+evaluated using nested cross-validation with match-event groups held out, which
+limits model-selection bias and respects the grouped dependence structure
+\citep{varmasimon2006nestedcv,roberts2017blockedcv}. PR-AUC is the primary metric
+because reversals comprise 12.8\% of the sample and precision--recall summaries
+are especially informative under class imbalance \citep{saito2015precisionrecall};
+F1, ROC-AUC, and Brier score are also reported \citep{ferro2007brier}. Within
+each outer training fold, hyperparameters and the F1 decision threshold are
+selected from grouped inner out-of-fold predictions. The fitted model and frozen
+threshold are then applied to the held-out outer fold, whose labels are used
+only for final evaluation. A chronological holdout trains
+on the earliest 78 matches and tests on the latest 26, ordered by kickoff, and
+match-cluster bootstrap intervals quantify the incremental performance of the
+expanded feature set. This supplementary time-ordered check addresses temporal
+transportability rather than replacing grouped validation \citep{bergmeir2018timeseriescv}.
+Future price outcomes are excluded from model inputs. More broadly, the exercise
+is framed as outcome prediction, not automated adjudication of illegal trading
+\citep{james2023illegaltrading}.
+
+\subsubsection{Unsupervised screening and contextual audit}
+
+The integrity screen covers all 67,845 P99 trade episodes in the 360 markets.
+A transparent rule score records extreme relative size, initiating-minute HHI
+of at least 0.90, absolute flow imbalance of at least 0.90, aligned follower
+flow, and a substantial observed opposite-direction trade by the initiating
+wallet. In parallel, separate Isolation Forest models are fitted to match and
+country-outright markets using 500 trees, at most 4,096 observations per tree,
+and random seed 20260814 \citep{liu2008isolationforest}. Model inputs contain trading and observed-wallet
+sequence features but exclude subsequent price changes and reversal outcomes.
+The highest-scoring one per cent is a review-budget flag, not a predicted class.
+
+Multiple P99 trades in the same market-minute are collapsed for qualitative
+review. A pre-specified audit sample is drawn from the 50 highest-ranked clusters
+in each market family and includes method-agreement clusters, the highest 25
+Isolation Forest clusters per family, and transparent-rule additions. The 73
+resulting cases are assigned one of five neutral dispositions:
+\emph{event information}, \emph{not anomalous after context}, \emph{unusual but
+unresolved}, \emph{insufficient data}, or \emph{data artifact}. The audit was
+signed by the researcher on 15 August 2026. The label \emph{manipulation} is not
+available because there is no independently verified misconduct label and
+public addresses do not reveal common ownership or intent.
+
+The supervised and unsupervised components answer different questions.
+Supervised models predict the objectively labelled outcome of subsequent price
+reversal; they do not classify manipulation. Isolation Forest and transparent
+rules instead identify multivariate trading episodes that are unusual without
+requiring a verified misconduct label. Contextual case review then assesses
+whether those episodes are explained by match information, boundary-price
+mechanics, or ordinary execution. Only residual cases are described neutrally
+as unusual and potentially manipulation-consistent; neither anomaly rank nor
+case retention establishes misconduct.

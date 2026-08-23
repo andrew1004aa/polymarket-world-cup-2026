@@ -1,0 +1,46 @@
+# Operating-system and editor files
+.DS_Store
+*.swp
+
+# Python and Node environments
+.venv*/
+__pycache__/
+*.py[cod]
+node_modules/
+
+# Credentials and local configuration
+.env
+.env.*
+*.key
+
+# Raw and derived data are intentionally excluded from the public repository
+raw/
+intermediate/
+regression_inputs/
+regression_ready/
+model_samples/
+analysis_ready/
+ml_results/
+integrity_results/
+outputs/
+logs/
+source/*.xlsx
+trades.csv
+prices.csv
+market_metadata.json
+data_api_progress.json
+progress.json
+*.sqlite3
+*.csv.gz
+*.json.gz
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

@@ -1,0 +1,194 @@
+% main.tex — MSc dissertation master file.
+% Compile this file in Overleaf. Individual chapters live under sections/
+% and are pulled in with \input so each chapter can be reviewed and edited
+% as its own file.
+
+\documentclass[12pt, a4paper]{article}
+
+% =========================================================
+% PACKAGES
+% =========================================================
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{eso-pic}        % Required for UCL cover header/footer
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage[round]{natbib}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+\onehalfspacing
+
+% =========================================================
+% PDF METADATA
+% =========================================================
+
+\hypersetup{
+    pdftitle={
+        Large Trades and Short-Horizon Price Adjustment on Polymarket:
+        Evidence from the 2026 FIFA World Cup
+    },
+    pdfauthor={Chih-Yu Liang},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% =========================================================
+% DOCUMENT
+% =========================================================
+
+\begin{document}
+
+% =========================================================
+% UCL TITLE PAGE
+% =========================================================
+
+% UCL header image
+\AddToShipoutPictureBG*{%
+    \AtPageUpperLeft{%
+        \raisebox{-\height}{%
+            \includegraphics[width=\paperwidth]
+            {Logos/UCL page header.png}%
+        }%
+    }%
+}
+
+% UCL footer image
+\AddToShipoutPicture*{%
+    \parbox[t][\paperheight][t]{\paperwidth}{%
+        \includegraphics[width=1.2\paperwidth]
+        {Logos/UCL page footer.png}%
+    }%
+}
+
+\begin{titlepage}
+
+\thispagestyle{empty}
+
+\begin{center}
+
+% Space below UCL header
+\vspace*{3.6cm}
+
+% Dissertation title
+{\LARGE
+Large Trades and Short-Horizon Price Adjustment on Polymarket:\\
+Evidence from the 2026 FIFA World Cup
+\par}
+
+\vspace{1.4cm}
+
+% Author
+{\Large Chih-Yu Liang\par}
+
+\vspace{1.4cm}
+
+% Supervisor
+{\Large Supervisor:\par}
+{\Large Hui Gong\par}
+
+\vspace{1.7cm}
+
+
+
+\vspace{1.35cm}
+
+
+\vspace{0.35cm}
+
+Dissertation Submitted in Partial Fulfillment of The Requirements for The
+Degree of
+\vspace{0.25cm}
+
+\textit{MSc in Venture Capital and Private Equity with Financial Technology}
+\vspace{0.25cm}
+
+University College London
+
+\vspace{1.5cm}
+
+September 2026
+
+\end{center}
+
+\end{titlepage}
+
+% =========================================================
+% END OF TITLE PAGE
+% =========================================================
+
+\input{sections/declaration}
+
+\newpage
+
+
+% =========================================================
+% ABSTRACT
+% =========================================================
+
+\input{sections/abstract}
+
+\newpage
+
+\input{sections/impact_statement}
+
+\newpage
+
+
+% =========================================================
+% TABLE OF CONTENTS
+% =========================================================
+
+\tableofcontents
+
+\newpage
+
+\listoftables
+
+\newpage
+
+\listoffigures
+
+\newpage
+
+
+% =========================================================
+% MAIN TEXT
+% =========================================================
+
+\input{sections/introduction}
+
+\input{sections/literature_review}
+
+\input{sections/data}
+
+\input{sections/research_design}
+
+\input{sections/results}
+
+\input{sections/discussion}
+
+\input{sections/conclusion}
+
+
+% =========================================================
+% APPENDIX
+% =========================================================
+
+\appendix
+
+\input{sections/appendix_robustness}
+
+
+% =========================================================
+% REFERENCES
+% =========================================================
+
+\bibliographystyle{apalike}
+\bibliography{references_verified}
+
+\end{document}

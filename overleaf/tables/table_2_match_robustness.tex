@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Horizon and non-overlap robustness}
+\label{tab:match-horizons}
+\scriptsize
+\begin{tabular}{lcccccc}
+\hline
+ & 1m total & 5m total & 15m total & 1m split & 5m split & 15m split \\
+\hline
+Total flow & 0.000051*** & 0.000069*** & 0.000093*** &  &  &  \\
+ & (0.000003) & (0.000005) & (0.000007) &  &  &  \\
+P99 large flow &  &  &  & 0.000112*** & 0.000143*** & 0.000181*** \\
+ &  &  &  & (0.000008) & (0.000011) & (0.000015) \\
+Ordinary flow &  &  &  & 0.000034*** & 0.000049*** & 0.000067*** \\
+ &  &  &  & (0.000003) & (0.000004) & (0.000006) \\
+\hline
+\multicolumn{7}{l}{\textit{Panel B: UTC-aligned non-overlapping five-minute windows}} \\
+Total flow & 0.000074*** & & & & & \\
+ & (0.000006) & & & & & \\
+P99 large flow & 0.000149*** & & & & & \\
+ & (0.000014) & & & & & \\
+Ordinary flow & 0.000051*** & & & & & \\
+ & (0.000005) & & & & & \\
+\hline
+\multicolumn{7}{p{0.96\textwidth}}{\footnotesize Notes: Horizon models use 744,470 common observations. Non-overlap models use 149,438 observations. All models use frozen controls, market and calendar-hour fixed effects, and event-clustered CRV1 standard errors.}
+\end{tabular}
+\end{table}

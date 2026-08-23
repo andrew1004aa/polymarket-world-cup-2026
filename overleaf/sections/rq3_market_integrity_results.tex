@@ -1,0 +1,205 @@
+\subsection{Extended market-integrity results}
+\label{sec:rq3-integrity-results}
+
+Table~\ref{tab:rq3-integrity-results} summarises the supplementary market-integrity evidence.
+The results distinguish a systematic concentration association, a systematic
+reversal test, out-of-sample predictability, and unusual individual cases.
+
+\input{tables/table_rq3_integrity_results}
+
+\subsubsection{MI1: concentration and update incidence}
+
+In the fully controlled model, wallet HHI is positively associated with the
+absolute five-minute price change ($\beta=0.000408$, standard error $=0.000036$,
+$p<0.001$). A 0.1 increase in HHI corresponds to only a 0.0041 percentage-point
+increase in absolute probability movement. The sign differs from the minimal
+specification, making activity controls substantively important.
+
+The two-part models locate this association almost entirely in update incidence.
+HHI increases the probability of any five-minute price update
+($\beta=0.040424$, standard error $=0.003687$, $p<0.001$); a 0.1 increase in HHI
+corresponds to a 0.404 percentage-point increase, approximately 11\% of the
+3.69\% baseline update rate. Conditional on a non-zero update, HHI is associated
+with a slightly smaller absolute movement ($\beta=-0.000259$, $p=0.0275$), but
+this result is not robust across the largest-wallet and top-three-wallet-share
+proxies. MI1 is therefore conditionally supported on the extensive margin, not
+as evidence that concentration reliably increases jump magnitude.
+
+\subsubsection{MI2: no systematic concentration--reversal relation}
+
+None of the six concentration-by-directional-pressure coefficients predicts
+partial or full reversal at conventional significance levels. The partial-
+reversal estimates are 0.0727, 0.0230, and $-0.0246$ at 15, 30, and 60 minutes;
+the corresponding full-reversal estimates are 0.0054, 0.0257, and $-0.0413$.
+Unadjusted $p$-values range from 0.430 to 0.904 for the first five estimates and
+equal 0.509 at 60 minutes; all six Holm-adjusted $p$-values equal one. HHI-only
+robustness models are also insignificant. MI2 is not supported: concentrated
+directional activity does not systematically predict a subsequent correction.
+This null result does not rule out isolated unusual episodes.
+
+\subsubsection{MI3: incremental out-of-sample prediction}
+
+All MI3 features are observed by approximately minute 5 after the initiating
+P99 trade, and the target is subsequent full reversal by minute 30. Accordingly,
+MI3 predicts the minute-5-to-minute-30 outcome rather than reversal at trade
+initiation. F1 thresholds are selected exclusively from inner out-of-fold
+predictions within each outer training fold and are frozen before evaluation on
+the held-out fold.
+
+The expanded feature set improves discrimination for every model in grouped
+cross-validation. Logistic regression rises from PR-AUC 0.157 and F1 0.225 to
+0.236 and 0.298. The expanded random forest performs best, with PR-AUC 0.264,
+F1 0.336, and ROC-AUC 0.720. Removing concentration variables reduces random-
+forest PR-AUC to 0.199 and F1 to 0.300, while removing follower variables reduces
+them to 0.245 and 0.323. Removing trade size does not reduce PR-AUC, indicating
+that size alone is not a stable independent ranking signal once the other
+features are available.
+
+The chronological holdout yields the same ordering. Expanded logistic
+regression obtains PR-AUC 0.340, F1 0.373, and ROC-AUC 0.750, compared with
+0.188, 0.248, and 0.586 for its baseline. Expanded random forest obtains PR-AUC
+0.337, F1 0.423, and ROC-AUC 0.791, compared with 0.130, 0.182, and 0.427. For
+the random forest, the match-cluster bootstrap increase is 0.1218 in PR-AUC
+(95\% interval 0.0683--0.1946), 0.1290 in F1 (0.0831--0.1769), and 0.2182 in
+ROC-AUC (0.1492--0.2906). MI3 is supported as a predictive claim about the
+combined feature set, not as a causal or manipulation claim.
+
+\subsubsection{Anomaly screening and signed case audit}
+
+The transparent screen identifies 104 match episodes and 38 outright episodes
+with scores of at least four. The within-family Isolation Forest one-per-cent
+review queues contain 534 match and 145 outright episodes. Only 20 episodes are
+selected by both methods, reflecting their different purposes: the rule score
+requires a narrow conjunction, whereas Isolation Forest ranks unusual
+multivariate combinations.
+
+The 73 audited case rows reduce to 35 linked or standalone event units after related
+minutes and markets are grouped. The signed dispositions are 38 event-
+information cases (52.1\%), 18 not anomalous after context (24.7\%), 12 unusual
+but unresolved (16.4\%), and 5 insufficient-data cases (6.8\%). The 12 unresolved
+rows reduce further to eight candidate units. No audited case establishes
+manipulation. The audit was performed and signed by the researcher and is not
+presented as independent external validation.
+
+Cases 060 and 061 provide the most relevant systematic two-sided pattern. The
+Australia and Bosnia outright events occur 45 seconds apart, contain nearly
+equal observed opposite-direction value, have near-zero flow imbalance, and
+produce no price movement. This cross-market regularity is consistent with
+systematic two-sided trading or position adjustment. The observed sequence
+cannot identify a trading role or establish strategic price control.
+
+Taken together, the supplementary market-integrity analyses find that concentration is associated with whether prices
+update and that behavioral/concentration features improve reversal prediction,
+but it finds no systematic concentration-driven reversal. Contextual review
+further shows that most high anomaly scores reflect live information, terminal
+outcomes, or boundary-price mechanics. The defensible contribution is therefore
+a reproducible market-integrity screening framework rather than a finding of
+misconduct.
+
+\subsubsection{Dynamic past-only wallet heterogeneity and transaction sequences}
+\label{sec:wallet-heterogeneity-results}
+
+Table~\ref{tab:wallet-heterogeneity-decisions} reports the final HA1--HA4
+decisions. The common evaluation period contains 2,395,771 transaction actions,
+279 markets, and 93 match events from 15 June through 22 July. For each UTC
+day, the primary rolling definition uses only the preceding seven complete
+days. Across the 38 evaluation days, 2,100--32,674 wallets satisfy the activity
+requirement and 21--327 are classified in the daily top one per cent. The
+expanding definition provides a same-period robustness comparison, while the
+full-window definition remains descriptive.
+
+HA1 is supported for ordinary flow. Relative to other wallets' ordinary
+actions, same-direction continuation is 0.1466 higher under rolling
+classification and 0.1513 higher under expanding classification; paired $t$
+and Wilcoxon tests remain significant after Holm adjustment ($p<0.001$). Among
+large actions, the corresponding wallet contrasts are positive but the paired
+$t$ and Wilcoxon conclusions disagree, so no robust large-action wallet effect
+is claimed. The stable finding is persistent ordinary execution by wallets
+with high prior activity, not identified order splitting, herding, or market
+making.
+
+HA2 is supported as a conditional price association. Under rolling
+classification, high activity is associated with higher update incidence among
+large trades ($0.006397$, $p<0.001$) and ordinary trades ($0.004262$,
+$p<0.001$). Directional-price contrasts are likewise positive for large
+($0.000071$, $p<0.001$) and ordinary ($0.000052$, $p<0.001$) flow. The expanding
+results have the same signs and significance. Trade size also retains a
+positive association within both wallet groups.
+
+HA3 is not robustly supported. In the primary rolling design, the additional
+large-by-high-activity interaction is not significant for update incidence
+($0.002135$, $p=0.0758$) or directional response ($0.000019$, $p=0.163$). The
+expanding update interaction is significant at five per cent ($0.002503$,
+$p=0.0331$), but its directional interaction is not ($p=0.272$). By contrast,
+the future-informed ex-post interactions are large and significant. This
+comparison demonstrates why the ex-post apparent synergy is descriptive and
+does not govern inference.
+
+HA4 is not supported as a robust manipulation-consistent pattern. In the
+primary rolling design, favourable-opposite contrasts do not survive both the
+paired $t$ and Wilcoxon criteria after Holm adjustment. Expanding classification
+produces an isolated positive ordinary-wallet contrast, but it is not reproduced
+by the primary definition. In the 30-minute full-reversal model, the rolling
+and expanding large-by-high-activity interactions are both insignificant
+($p=0.608$ and $p=0.550$; Holm-adjusted values $1.000$ and $0.979$). The rolling
+high-activity contrast among large flow is negative rather than positive and
+is not reproduced by expanding history. The combined evidence supports
+persistent execution and separate size/activity price associations, but not a
+stable low-buy/high-sell or push--reverse signature.
+
+\input{tables/table_wallet_heterogeneity_decisions}
+
+\subsubsection{Past-only whale-wallet results}
+\label{sec:whale-wallet-results}
+
+Table~\ref{tab:whale-wallet-decisions} reports the final WH1--WH4 decisions.
+The whale analysis uses the same 2,395,771-action evaluation sample but forms
+daily wallet status from all 6,725,732 canonical trades in the 360-market
+universe. Under the primary expanding top-one-per-cent definition, the eligible
+population grows from 111,419 to 335,414 wallets and the daily whale group from
+1,115 to 3,355. No frequency or market-breadth condition is applied.
+
+WH1 is supported as a conditional association. In the primary price-update
+model, the whale-minus-other contrast is 0.008470 among large trades and
+0.005266 among ordinary trades (both $p<0.001$). Directional-price contrasts
+are 0.000058 ($p<0.001$) and 0.000050 ($p<0.001$). Large-trade effects remain
+positive within both wallet groups, so whale status and individual execution
+size capture distinct dimensions of observed activity.
+
+WH2 is supported for transaction activity and ordinary-flow continuation.
+Whales are 0.2155 more likely than other wallets to have another action within
+five minutes after a large action and 0.5782 more likely after an ordinary
+action. Conditional same-direction continuation is 0.1529 higher for ordinary
+whale actions, with both Holm-adjusted paired tests below 0.001. The large-action
+continuation contrast is not robust across the paired $t$ and Wilcoxon tests.
+
+WH3 is not robustly supported. The primary expanding update interaction is
+positive ($0.003203$, $p=0.0137$), but the directional interaction is not
+($p=0.601$). Rolling top one per cent yields $p=0.153$ and $p=0.700$, while the
+expanding top-two-per-cent interactions are also insignificant. The stronger
+full-window ex-post interactions therefore do not establish a stable synergy.
+
+WH4 receives mixed evidence. After a large action, whales are 0.0466 more
+likely to make an opposite action within 60 minutes (both Holm-adjusted tests
+$p<0.001$). Conditional on an opposite action, the favourable-price proportion
+is 0.1038 higher (adjusted paired $t$ $p<0.001$; adjusted Wilcoxon $p<0.001$),
+and this sign is reproduced by rolling top one per cent and expanding top-0.5
+and top-two-per-cent definitions. However, the primary 30-minute full-reversal
+interaction is insignificant ($p=0.583$, Holm-adjusted $p=1.000$), as are the
+rolling and percentile robustness interactions. The sequence evidence is
+consistent with active position adjustment or favourable execution after large
+actions, but it does not show that whales systematically push prices and then
+profit from a market-level correction.
+
+\input{tables/table_whale_wallet_decisions}
+
+\subsubsection{Continuous cumulative-volume robustness}
+\label{sec:continuous-wallet-volume-results}
+
+A threshold-free specification replaces whale status with the within-day
+standardised log of each wallet's cumulative gross USDC observed strictly
+before that day, re-estimating the same WH1--WH4 sequence and price outcomes.
+The results reinforce the activity and favourable-execution components of WH2
+and WH4 but do not support a uniformly positive large-by-wallet-scale price
+synergy, so WH3 remains unsupported; full coefficients are reported in
+Appendix~\ref{sec:regression-appendix}.

@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\caption{Pairwise Pearson correlations: primary pre-kickoff match-market sample}
+\label{tab:correlation-matrix}
+\resizebox{\textwidth}{!}{%
+\scriptsize
+\begin{tabular}{lrrrrrrrr}
+\hline
+ & $\Delta$ price & Total flow & Large flow & Ordinary flow & Baseline price & Lag 30m $\Delta$ & Log lag vol. & Log min. to kickoff \\
+\hline
+$\Delta$ price & 1.000 & 0.135 & 0.139 & 0.094 & 0.007 & 0.067 & -0.002 & 0.002 \\
+Total flow & 0.135 & 1.000 & 0.404 & 0.920 & 0.206 & -0.003 & 0.233 & -0.185 \\
+Large flow & 0.139 & 0.404 & 1.000 & 0.101 & 0.064 & 0.015 & 0.043 & -0.037 \\
+Ordinary flow & 0.094 & 0.920 & 0.101 & 1.000 & 0.206 & -0.019 & 0.258 & -0.213 \\
+Baseline price & 0.007 & 0.206 & 0.064 & 0.206 & 1.000 & 0.022 & 0.141 & 0.145 \\
+Lag 30m $\Delta$ & 0.067 & -0.003 & 0.015 & -0.019 & 0.022 & 1.000 & -0.009 & 0.013 \\
+Log lag vol. & -0.002 & 0.233 & 0.043 & 0.258 & 0.141 & -0.009 & 1.000 & -0.727 \\
+Log min. to kickoff & 0.002 & -0.185 & -0.037 & -0.213 & 0.145 & 0.013 & -0.727 & 1.000 \\
+\hline
+\end{tabular}%
+}
+\par\vspace{4pt}
+\noindent\begin{minipage}{\textwidth}
+\footnotesize Notes: Pairwise Pearson correlation coefficients computed on the 748,481-observation primary pre-kickoff match-market sample. Correlations are descriptive only and are not given a causal interpretation.
+\end{minipage}
+\end{table}

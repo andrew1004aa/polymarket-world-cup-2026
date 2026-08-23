@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Alternative clustered inference}
+\label{tab:appendix-clusters}
+\scriptsize
+\begin{tabular}{llllrrr}
+\hline
+Model & Covariance & Flow term & Estimate & SE & $p$-value & Rows \\
+\hline
+H1 (controlled) & Event & Total flow & 0.000071 & 0.000005 & $<0.001$ & 748,481 \\
+H2 (P99 split) & Event & P99 large flow & 0.000146 & 0.000010 & $<0.001$ & 748,481 \\
+H2 (P99 split) & Event & Ordinary flow & 0.000048 & 0.000004 & $<0.001$ & 748,481 \\
+H1 (controlled) & Market & Total flow & 0.000071 & 0.000003 & $<0.001$ & 748,481 \\
+H2 (P99 split) & Market & P99 large flow & 0.000146 & 0.000008 & $<0.001$ & 748,481 \\
+H2 (P99 split) & Market & Ordinary flow & 0.000048 & 0.000003 & $<0.001$ & 748,481 \\
+H1 (controlled) & Event + hour & Total flow & 0.000071 & 0.000005 & $<0.001$ & 748,481 \\
+H2 (P99 split) & Event + hour & P99 large flow & 0.000146 & 0.000011 & $<0.001$ & 748,481 \\
+H2 (P99 split) & Event + hour & Ordinary flow & 0.000048 & 0.000004 & $<0.001$ & 748,481 \\
+\hline
+\multicolumn{7}{p{0.96\textwidth}}{\footnotesize Notes: Point estimates are unchanged across covariance estimators. A null-imposed WCR11 bootstrap using 9,999 Rademacher draws and 104 match-event clusters rejects zero total, P99-large and ordinary flow coefficients and equality of the P99-large and ordinary coefficients (all $p<0.0001$).}
+\end{tabular}
+\end{table}

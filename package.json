@@ -1,0 +1,8 @@
+{
+  "name": "polymarket-world-cup-2026",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "xlsx": "0.18.5"
+  }
+}

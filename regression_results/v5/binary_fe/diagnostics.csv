@@ -1,0 +1,3 @@
+model,rows,markets,events,outcome_rate,iterations,converged,log_likelihood,unconditional_rows,conditional_fe_rows
+EXPANDING_LOGIT,417363,243,104,0.04311354863751698,10,True,-52206.672012093986,422314,417363
+ROLLING7_LOGIT,364854,227,102,0.044464361086900515,9,True,-46744.88605531128,370079,364854

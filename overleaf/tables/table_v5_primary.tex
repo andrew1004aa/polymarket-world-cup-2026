@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Past-only P99 five-minute directional-price results}
+\label{tab:v5-primary}
+\small
+\begin{tabular}{lcc}
+\toprule
+ & Expanding history & Rolling seven day \\
+\midrule
+Large signed-log flow & 0.000101*** & 0.000101*** \\
+ & (0.000008) & (0.000009) \\
+Ordinary signed-log flow & 0.000019*** & 0.000020*** \\
+ & (0.000003) & (0.000003) \\
+Large minus ordinary & 0.000082*** & 0.000081*** \\
+ & (0.000007) & (0.000007) \\
+Observations & 422,314 & 370,079 \\
+Markets & 252 & 236 \\
+Match-event clusters & 104 & 103 \\
+\bottomrule
+\multicolumn{3}{p{0.92\textwidth}}{\footnotesize Notes: The outcome is the strictly aligned five-minute change in YES-equivalent probability. Both P99 definitions use only complete prior UTC days and require at least 1,000 prior within-market trades. Models include the stated controls, market and UTC calendar-hour fixed effects. CRV1 standard errors are clustered by match event. *** $p<0.01$.}
+\end{tabular}
+\end{table}

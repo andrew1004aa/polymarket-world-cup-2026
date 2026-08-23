@@ -1,0 +1,175 @@
+% Updated research design aligned with the completed 2026 World Cup dataset.
+% This file is intended to be included with \input{sections/research_design}.
+% Verified references use natbib; remaining legacy citations await metadata verification.
+
+\section{Research Design}
+\label{sec:research-design}
+
+\subsection{Research objective and setting}
+
+This study examines whether unusually large individual trades are associated with short-horizon movements in Polymarket-implied probabilities, whether those movements persist or reverse, and whether they improve alignment with eventual market outcomes. The design is observational: it estimates conditional associations and does not claim that a trade caused a price change, conveyed private information, or manipulated a market. Throughout this dissertation, ``price impact'' denotes a reduced-form short-horizon conditional association between signed trading flow and subsequent market prices, estimated with market and calendar-hour fixed effects, rather than a causal structural price-impact estimate in the sense of a controlled or instrumented design; the term is retained because it is the vocabulary the underlying microstructure literature uses, not because the design identifies a causal effect.
+
+The observation window spans 2026-06-01T00:00:00Z to 2026-08-01T00:00:00Z, with the end point excluded. The final universe consists of 360 binary markets: 312 home-win, away-win, or draw markets covering 104 FIFA World Cup matches, and 48 outright country-winner markets. The canonical trade sample contains 6,725,732 records from the public Polymarket Data API and 335,414 normalised proxy-wallet addresses. The price dataset contains 17,980,605 raw CLOB price-history points for 720 YES and NO tokens, requested at one-minute fidelity without interpolation or resampling. Match timing and outcomes come from the reviewed 104-event FIFA table. Dune is not used to add, remove, or replace canonical trade observations.
+
+\subsection{Research questions and hypotheses}
+
+The study asks four questions. First, as a baseline check, how is signed trade flow associated with subsequent changes in a market's YES-equivalent probability? Second, and central to the dissertation, does unusually large net flow have a stronger association than ordinary net flow? Update incidence and conditional magnitude are examined as mechanism diagnostics rather than embedded in H2. Third, do large-trade-associated movements persist or reverse, and do they improve the forecast relative to the realised binary outcome? Fourth, does the association vary with time to kickoff and match phase?
+
+H1 and H2 are primary. Within that pair, H1 is a baseline validation of the signed-flow construction, while H2, together with its extensive-versus-intensive-margin decomposition, is the dissertation's main empirical contribution. H3a, H3b and RQ4 are secondary hypotheses and a research question that interpret and add heterogeneity context to the H2 result rather than stand as co-equal contributions. The corresponding hypotheses and research question are:
+
+\begin{description}
+  \item[H1 (baseline).] Greater signed total trade flow is associated with a short-horizon probability change in the same direction. This result validates the signed-flow construction; it is not, by itself, the dissertation's central finding.
+  \item[H2 (primary contribution).] Conditional on the common controls and fixed effects, signed flow from individual trades classified by a past-only, market-specific P99 threshold has a larger five-minute directional-price association than signed flow from ordinary trades. Whether the difference operates through update incidence or conditional update magnitude is evaluated as a mechanism decomposition rather than built into the hypothesis.
+  \item[H3a.] Price movements associated with large-trade flow persist from minute five to minute fifteen rather than reversing.
+  \item[H3b.] Large-trade-associated price movements improve forecast accuracy relative to the eventual resolved outcome, measured by Brier-score improvement, relative to ordinary-trade-associated movements.
+\end{description}
+
+The literature reviewed in Section~\ref{sec:literature-review} does not yield a strong ex-ante directional prediction for the shape of pre-kickoff timing heterogeneity, so this dimension is treated as a research question rather than forced into a falsifiable directional hypothesis:
+
+\begin{description}
+  \item[RQ4.] How does the large-versus-ordinary flow--price association vary across pre-specified time-to-kickoff bands, and between the pre-kickoff and post-kickoff/pre-resolution phases?
+\end{description}
+
+This formulation follows the microstructure literature on informed trading, trade size, and price discovery \citep{kyle1985continuous,easleyohara1987tradesize,hasbrouck1991information,madhavan1997prices}, while prediction-market research motivates the interpretation of prices as market-implied probabilities subject to institutional and belief-based qualifications \citep{wolferszitzewitz2004prediction,manski2006interpreting}. Manipulation and corrective-trading research motivates the distinction between temporary pressure and information \citep{allengale1992manipulation,camerer1998racetrack,hanson2006aggregation}.
+
+\subsection{Observation units and sample separation}
+
+The primary observation unit is the market-minute. For a minute beginning at
+$t$, flow contains trades timestamped in $[t,t+1)$. The baseline is the latest
+observed YES-equivalent price strictly before $t$, and each post-flow outcome is
+the first observed price at or after the designated horizon. This ordering
+prevents the baseline from incorporating a price observation recorded after a
+trade in the focal minute.
+
+The match and outright families are estimated separately. The primary match specification uses pre-kickoff observations. Post-kickoff/pre-resolution observations are analysed separately because match events generate fundamental information; this phase is not labelled purely in-play because actual final-whistle timestamps are unavailable. Outright markets form a separate panel because their horizon and information environment differ from single-match contracts. Trades at or after recorded resolution remain in the method-neutral audit panel but are excluded from model samples.
+
+\subsection{Direction and large-trade definition}
+
+Trade direction is expressed in YES-probability terms. BUY YES and SELL NO receive a sign of $+1$; SELL YES and BUY NO receive a sign of $-1$. For trade $i$,
+
+\begin{equation}
+  \text{SignedValue}_{i}=\text{Direction}_{i}\times
+  \left(\text{ExecutedTokenPrice}_{i}\times\text{SizeShares}_{i}\right).
+\end{equation}
+
+A YES-token history is retained as observed, whereas a NO-token price is converted to one minus the NO price. YES and NO histories are not treated as independent markets. The YES history is primary and the NO-equivalent series is used for complementarity and data-quality checks.
+
+For each binary market, trade value is executed token price multiplied by
+shares. The primary expanding-history threshold for UTC day $d$ is the linearly
+interpolated P99 of unsigned USDC trade value in the same market from 1 June to
+the end of day $d-1$. A threshold becomes eligible after at least 1,000 prior
+trades. The principal definition robustness instead uses the preceding seven
+complete UTC days. A trade is large when its value is at or above the applicable
+threshold; ties are included. Both definitions are past-only, so a trade is
+never classified using later observations. Models are estimated separately and
+on their common support. Classification occurs before applying YES-equivalent
+direction and does not represent wallet wealth, ownership, institutional status,
+profitability, information, or intent.
+
+\subsection{Price response, persistence, and forecast improvement}
+
+Let $p^-_{m,t}$ be the latest available YES-equivalent CLOB price strictly
+before $t$, and let $p^+_{m,t+h}$ be the first observed price at or after the
+target $t+h$. Prices are not interpolated. For horizon $h$,
+
+\begin{equation}
+  \Delta p_{m,t}(h)=p^+_{m,t+h}-p^-_{m,t}.
+\end{equation}
+
+The primary pre-kickoff match horizon is five minutes; one, 15, and 30 minutes
+trace the response path. Strict-0 alignment requires the baseline to occur less
+than 60 seconds before $t$ and the outcome less than 60 seconds after its target;
+strict-1 permits 120 seconds. No interpolation, resampling, or gap filling is
+used. No pre-kickoff model window may cross actual kickoff.
+
+Pre-trade placebo outcomes cover $[-15,0)$, $[-5,0)$, and $[-1,0)$ relative
+to the focal flow minute. Post-trade lead--lag outcomes cover $+1$, $+5$,
+$+15$, and $+30$ minutes. The seven focal tests are adjusted by Holm's method
+within each threshold definition. A significant negative-horizon coefficient
+would indicate anticipation, price-chasing, shared information, or residual
+timing confounding rather than an effect of the later flow.
+
+For $h_2>h_1$, subsequent movement is
+
+\begin{equation}
+  \text{Reversal}_{m,t}(h_1,h_2)=
+  \operatorname{sign}(\text{NetSignedFlow}_{m,t})
+  \left(p_{m,t+h_2}-p_{m,t+h_1}\right).
+\end{equation}
+
+A negative value denotes movement against the initial flow direction. It is evidence of reversal but not, by itself, proof of manipulation. Let $y_m\in\{0,1\}$ be the resolved outcome. Forecast improvement is measured by the change in Brier loss,
+
+\begin{equation}
+  \text{BrierImprovement}_{m,t}(h)=
+  (y_m-p_{m,t})^2-(y_m-p_{m,t+h})^2.
+\end{equation}
+
+A positive value means that the later probability is closer to the realised outcome. This avoids an inappropriate unconditional 50 per cent accuracy benchmark. Movement to final zero-or-one settlement is not labelled permanent impact because settlement is mechanically determined by resolution.
+
+\subsection{Empirical specifications}
+
+The primary specification regresses the strictly aligned five-minute
+pre-kickoff price change on signed-log flow. H1 uses total net signed flow. H2
+decomposes flow into past-only P99 large-trade and ordinary-trade components and
+directly tests $H_0:\beta_{large}=\beta_{ordinary}$. Primary controls are the
+pre-period probability, lagged 30-minute price change, log lagged 30-minute
+volume, and log minutes to kickoff. Models include market and unique UTC
+calendar-hour fixed effects. Standard errors are clustered by the 104 match
+events.
+
+Two additional specifications address timing and shared match information.
+First, the pre-trade placebo and post-trade lead--lag models estimate the same
+coefficient contrast at all seven frozen horizons. Second, market fixed effects
+are combined with event-by-minute and event-by-five-minute fixed effects, so
+identification comes from related home-win, draw, and away-win contracts for the
+same match in the same time cell. Cells containing only one observed market do
+not identify this comparison and are excluded.
+
+The extensive margin is estimated first as a linear-probability model for any
+non-zero five-minute update and then as a market-fixed-effects logit robustness
+model. Markets without within-market outcome variation carry no finite logit
+slope information and are excluded from that robustness sample. The intensive
+margin conditions on a non-zero update and is treated as descriptive because it
+selects on the realised outcome.
+
+H3a is estimated on movement from minute 5 to minute 15; H3b is estimated on the associated Brier-score improvement. RQ4 uses five mutually exclusive pre-kickoff timing bands and a pooled five-minute pre-/post-kickoff phase-interaction model. The phase comparison uses controls common to both phases and tests the change in the large-minus-ordinary coefficient gap. Because RQ4 is exploratory, no monotonic pattern toward kickoff is imposed or expected a priori.
+
+Primary standard errors are clustered by match event because the home-win, away-win, and draw contracts for the same FIFA match are related. Robustness considers market clustering, two-way event and calendar-hour clustering where supported, and non-overlapping five-minute observations. The clustering rule and number of clusters are stated for every table.
+
+\subsection{Secondary wallet-heterogeneity design}
+\label{sec:wallet-heterogeneity-design}
+
+Secondary wallet tests distinguish an unusually large individual trade from
+past observed-wallet activity and cumulative capital deployment. High activity
+is classified daily using a rolling seven-day top one per cent with minimum
+history requirements; expanding history is a robustness definition. Four
+large/ordinary by high/other activity cells are compared using price and
+sequence outcomes. Complete definitions, HA1--HA4, tests, and multiplicity rules
+are reported in Appendix~\ref{sec:wallet-methods-appendix}.
+
+\subsection{Past-only whale-wallet design}
+\label{sec:whale-wallet-design}
+
+The past-only whale proxy instead ranks wallets by cumulative gross USDC before
+each evaluation day and imposes no minimum trade-frequency requirement. Rolling
+windows, alternative percentiles, and continuous standardised cumulative volume
+provide robustness. These measures describe prior observed capital deployment,
+not ownership, wealth, institutional status, or intent. Detailed WH1--WH4 and
+outcome definitions are also provided in Appendix~\ref{sec:wallet-methods-appendix}.
+
+\subsection{Identification, robustness, and data limitations}
+
+Large trades may respond to public news or match events, creating simultaneity
+and selection. Fixed effects, strict temporal ordering, pre-trade placebos, and
+event-by-time comparisons reduce specific forms of confounding but do not
+establish causality. The empirical language therefore remains associative.
+
+\subsection{Reproducibility}
+
+Analytical scripts read immutable inputs from \texttt{regression\_ready/} and write versioned outputs to separate, immutable analysis directories. Every filtering rule, time horizon, matching tolerance, threshold, transformation, and model count is logged. The earlier wallet-based artifacts described above remain unchanged as an audit trail and secondary high-activity-wallet analysis. The data-collection report and data dictionary remain the authority for source coverage and field definitions.
+
+Detailed specifications for the supplementary concentration, reversal-
+prediction, wallet-sequence, and anomaly-screening analyses are reported in
+Appendix~\ref{sec:supplementary-integrity-methods}. Keeping those specifications
+outside the main chapter preserves the distinction between the primary H1--H3
+design and exploratory behavioural or integrity analyses.

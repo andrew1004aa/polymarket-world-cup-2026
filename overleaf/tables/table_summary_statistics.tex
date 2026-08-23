@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\caption{Summary statistics: primary pre-kickoff match-market sample}
+\label{tab:summary-statistics}
+\resizebox{\textwidth}{!}{%
+\scriptsize
+\begin{tabular}{lrrrrrrrr}
+\hline
+Variable & N & Mean & SD & Min & P25 & Median & P75 & Max \\
+\hline
+5-minute $\Delta$ YES-equivalent price & 748,481 & -0.000001 & 0.001460 & -0.090000 & 0.000000 & 0.000000 & 0.000000 & 0.060000 \\
+Signed-log total net flow & 748,481 & 1.885274 & 3.174991 & -14.327927 & 0.693147 & 2.001480 & 3.813086 & 14.436413 \\
+Signed-log P99 large-trade net flow & 748,481 & 0.026848 & 1.320026 & -14.335115 & 0.000000 & 0.000000 & 0.000000 & 14.423634 \\
+Signed-log ordinary-trade net flow & 748,481 & 1.909488 & 2.995933 & -11.969488 & 0.693147 & 2.025513 & 3.810710 & 11.698710 \\
+Baseline YES-equivalent price & 748,481 & 0.396755 & 0.238089 & 0.016500 & 0.205000 & 0.335000 & 0.595000 & 0.947000 \\
+Lagged 30-minute price change & 748,481 & 0.000021 & 0.003011 & -0.090000 & 0.000000 & 0.000000 & 0.000000 & 0.100000 \\
+Log lagged 30-minute volume & 748,481 & 6.529865 & 3.025122 & 0.000000 & 4.636717 & 6.771383 & 8.693629 & 15.831398 \\
+Log minutes to kickoff & 748,481 & 7.360063 & 1.415594 & 1.791759 & 6.510258 & 7.445418 & 8.344267 & 10.567669 \\
+\hline
+\end{tabular}%
+}
+\par\vspace{4pt}
+\noindent\begin{minipage}{\textwidth}
+\footnotesize Notes: Statistics are computed on the 748,481-observation primary pre-kickoff match-market sample (312 match markets nested in 104 events, five-minute horizon). Flow variables are signed-log transformed: $\mathrm{sign}(\mathrm{flow})\times\log(1+|\mathrm{flow}|)$. Large trades are individual trades at or above their market-specific P99 threshold; ordinary trades are all remaining trades. These are descriptive statistics only and involve no hypothesis test.
+\end{minipage}
+\end{table}

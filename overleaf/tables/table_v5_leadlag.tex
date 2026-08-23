@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Pre-trade placebo and post-trade lead--lag contrasts}
+\label{tab:v5-leadlag}
+\small
+\begin{tabular}{rcc}
+\toprule
+Horizon (minutes) & Expanding history & Rolling seven day \\
+\midrule
+$-15$ & $-0.0000005$ & $-0.0000028$ \\
+$-5$  & $ 0.0000009$ & $ 0.0000004$ \\
+$-1$  & $ 0.0000001$ & $-0.0000007$ \\
+$+1$  & $ 0.0000581$*** & $ 0.0000580$*** \\
+$+5$  & $ 0.0000815$*** & $ 0.0000814$*** \\
+$+15$ & $ 0.0001078$*** & $ 0.0001052$*** \\
+$+30$ & $ 0.0001186$** & $ 0.0001210$* \\
+\bottomrule
+\multicolumn{3}{p{0.92\textwidth}}{\footnotesize Notes: Entries are large-minus-ordinary coefficient contrasts. Negative horizons are pre-trade placebo outcomes. Stars use Holm-adjusted $p$-values across the seven horizons within each P99 definition: *** $p<0.01$, ** $p<0.05$, * $p<0.10$. Fixed effects and clustering follow Table~\ref{tab:v5-primary}.}
+\end{tabular}
+\end{table}

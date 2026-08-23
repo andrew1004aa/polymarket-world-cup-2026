@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-08-22T11:55:21.214646+00:00",
+  "status": "complete_qc_passed",
+  "fixed_effects": [
+    "market + event\u00d7minute",
+    "market + event\u00d75-minute"
+  ],
+  "cluster": "event_id CRV1",
+  "single_market_cells": "excluded because they provide no within-cell cross-contract identification"
+}

@@ -1,0 +1,28 @@
+% Abstract: 211 words; official maximum 300 words.
+
+\section*{Abstract}
+
+This dissertation examines whether unusually large individual trades are
+associated with stronger short-horizon probability adjustment than ordinary
+trades on Polymarket. The canonical sample contains 6,725,732 Polymarket Data
+API trades across 360 markets related to the 2026 FIFA World Cup; market-level
+counts were cross-checked against independently extracted Dune records. Large
+trades are classified using market-specific past-only P99 thresholds. Prices
+are aligned without interpolation, and the analysis combines fixed-effects
+regressions, lead--lag tests, grouped machine learning, and anomaly screening.
+
+Under expanding-history and rolling-seven-day definitions, the large-minus-
+ordinary five-minute coefficients are 0.000082 and 0.000081. A tenfold increase
+in large-trade net flow corresponds to only about 0.0232 percentage points,
+indicating a small economic magnitude. Pre-trade placebo coefficients at
+$-15$, $-5$, and $-1$ minutes are insignificant; positive associations appear
+from $+1$ through $+15$ minutes and survive event-by-time fixed effects. Linear
+probability models find a larger update-incidence association for large flow,
+but market-fixed-effects logit models do not reject equality, making that
+mechanism interpretation model-sensitive. Features observed during the first
+five minutes improve out-of-sample prediction of full reversal by minute 30,
+but the model does not classify manipulation.
+
+The evidence supports a precise associational conclusion: relatively large net
+flow precedes a small same-direction short-horizon adjustment. It does not
+identify trader intent, private information, causal price impact, or misconduct.

@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\caption{Pre-match individual match-market regressions}
+\label{tab:match-primary}
+\small
+\begin{tabular}{lccc}
+\hline
+ & H1 unadjusted & H1 controlled & H2 P99 split \\
+\hline
+Signed-log total flow & 0.000069*** & 0.000071*** &  \\
+ & (0.000005) & (0.000005) &  \\
+P99 large flow &  &  & 0.000146*** \\
+ &  &  & (0.000010) \\
+Ordinary flow &  &  & 0.000048*** \\
+ &  &  & (0.000004) \\
+Baseline YES price &  & -0.004077*** & -0.004240*** \\
+ &  & (0.000649) & (0.000644) \\
+Lagged 30-minute price change &  & 0.033055*** & 0.032920*** \\
+ &  & (0.006689) & (0.006660) \\
+Log lagged 30-minute volume &  & -0.000002 & -0.000002 \\
+ &  & (0.000003) & (0.000003) \\
+Log minutes to kickoff &  & 0.000047*** & 0.000050*** \\
+ &  & (0.000007) & (0.000007) \\
+\hline
+Observations & 748,481 & 748,481 & 748,481 \\
+Within $R^2$ & 0.0197 & 0.0264 & 0.0333 \\
+Market fixed effects & Yes & Yes & Yes \\
+Calendar-hour fixed effects & Yes & Yes & Yes \\
+\hline
+\multicolumn{4}{p{0.92\textwidth}}{\footnotesize Notes: The dependent variable is the five-minute YES-equivalent probability change. CRV1 standard errors clustered by 104 match events are in parentheses. Large trades are individual trades at or above their market-specific P99 threshold. $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.}
+\end{tabular}
+\end{table}

@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering
+\caption{Persistence (H3a) and forecast-improvement (H3b) tests}
+\label{tab:h3}
+\scriptsize
+\begin{tabular}{lccccc}
+\hline
+ & Subsequent total & Subsequent split & Brier 0--5 & Brier 0--15 & Brier 5--15 \\
+\hline
+Total signed flow & 0.000021*** &  &  &  &  \\
+ & (0.000002) &  &  &  &  \\
+P99 large flow &  & 0.000033*** &  &  &  \\
+ &  & (0.000006) &  &  &  \\
+Ordinary flow &  & 0.000017*** &  &  &  \\
+ &  & (0.000002) &  &  &  \\
+Absolute P99 large flow &  &  & 0.000000 & 0.000013 & 0.000012* \\
+ &  &  & (0.000007) & (0.000012) & (0.000006) \\
+Absolute ordinary flow &  &  & 0.000002 & 0.000005 & 0.000003 \\
+ &  &  & (0.000003) & (0.000005) & (0.000003) \\
+\hline
+\multicolumn{6}{p{0.94\textwidth}}{\footnotesize Notes: Subsequent movement is $p_{t+15}-p_{t+5}$ conditional on the initial response. Positive Brier improvement denotes movement closer to the resolved outcome. All models use 744,470 observations and event-clustered CRV1 standard errors.}
+\end{tabular}
+\end{table}

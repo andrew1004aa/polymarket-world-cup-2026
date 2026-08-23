@@ -1,0 +1,9 @@
+# Supplemental inference environment (2026-08-07)
+# wildboottest/numba currently requires NumPy below 2.4.
+pandas==3.0.5
+pyarrow==25.0.0
+numpy==2.3.5
+scipy==1.18.0
+statsmodels==0.14.6
+pyfixest==0.60.0
+wildboottest==0.3.2

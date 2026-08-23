@@ -1,0 +1,48 @@
+\section{Detailed Wallet-Heterogeneity Methods}
+\label{sec:wallet-methods-appendix}
+
+The secondary high-activity analysis begins on 15 June and recalculates status
+for every UTC day using only earlier observations. The primary definition ranks
+eligible wallets by gross observed USDC volume over the preceding seven complete
+UTC days; eligibility requires at least five actions or activity on at least
+three days. The highest one per cent are classified as high activity for the
+following day. Expanding history uses all observations from 1 June through the
+preceding day with the same eligibility rule. Full-window status is descriptive
+only. Fixed 1--7 June and 1--14 June classifications remain audit artifacts and
+do not determine final HA decisions.
+
+Crossing daily wallet status with the within-market P99 indicator creates four
+groups: large trades by past high-activity wallets, large trades by other
+wallets, ordinary trades by past high-activity wallets, and ordinary trades by
+other wallets. Price models retain the main controls and fixed effects. Wallet
+sequences are chronologically ordered within wallet and market. Outcomes measure
+whether another action is observed, whether its YES-equivalent direction is the
+same, whether an opposite action occurs within 60 minutes, and whether a later
+opposite execution price is favourable in YES-equivalent terms. Event-level
+paired contrasts use paired $t$-tests and Wilcoxon signed-rank tests with Holm
+adjustment within each family.
+
+The secondary hypotheses are:
+\begin{description}
+  \item[HA1.] Past high-activity wallets exhibit greater same-direction continuation.
+  \item[HA2.] Past high-activity status has a price-update or directional-price association after separating large and ordinary trades.
+  \item[HA3.] Large size and past high activity have an additional interaction beyond their separate associations.
+  \item[HA4.] Past high-activity wallets exhibit more favourable opposite actions or large-trade-associated reversal.
+\end{description}
+
+The whale analysis captures prior capital deployment rather than trading
+frequency. For each evaluation day from 15 June through 22 July, wallets with at
+least one earlier trade are ranked by cumulative gross USDC across all 360
+markets. The highest one per cent are the primary past-only whale group. No
+minimum number of actions, active days, or markets is imposed. A trailing
+seven-day definition, expanding top 0.5 and top two per cent, and continuous
+within-day standardised $\log(1+x)$ cumulative volume are robustness checks.
+The full-window classification is descriptive only.
+
+The same size--wallet cells and price, sequence, favourable-opposite, and
+reversal outcomes are re-estimated. WH1 tests a separate price association; WH2
+tests subsequent activity and continuation; WH3 tests a large-by-wallet-status
+interaction; and WH4 tests favourable opposite actions and short-horizon full
+reversal. A favourable opposite action is conditional on observing an opposite
+action and is not realised profit. Neither sequence continuation nor favourable
+execution establishes a trading strategy or manipulation.

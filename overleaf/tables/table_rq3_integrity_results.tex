@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\caption{Summary of supplementary market-integrity evidence}
+\label{tab:rq3-integrity-results}
+\small
+\begin{tabular}{p{0.10\textwidth}p{0.24\textwidth}p{0.39\textwidth}p{0.17\textwidth}}
+\toprule
+Component & Method and sample & Main result & Decision \\
+\midrule
+MI1 & Two-way fixed effects and two-part models; 748,481 match market-minutes & HHI predicts update incidence ($\beta=0.040424$, $p<0.001$), but not a robust increase in conditional jump magnitude & Conditionally supported \\
+MI2 & Fixed-effects reversal models; 19,256 positive initial directional moves & No concentration-pressure coefficient predicts partial or full reversal at 15, 30, or 60 minutes; all Holm-adjusted $p=1$ & Not supported \\
+MI3 & Grouped nested CV and chronological holdout; 5,843 P99 events & Expanded random forest: grouped PR-AUC 0.264, F1 0.336; chronological PR-AUC 0.337, F1 0.423 & Supported predictively \\
+Screen & Rule score and Isolation Forest; 67,845 P99 episodes & 142 rule-priority and 679 Isolation-Forest review flags; 20 overlap & Ranking only \\
+Audit & Contextual review; 73 cases, 35 linked/standalone units & 38 event-information, 18 context-resolved, 12 unresolved, and 5 insufficient-data cases & No proven misconduct \\
+\bottomrule
+\end{tabular}
+\end{table}
