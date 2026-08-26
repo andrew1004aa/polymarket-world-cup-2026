@@ -6,12 +6,35 @@
 
 \subsection{Data sources and canonical trade sample}
 
-This dissertation draws on three linked public sources. Trade-level data were
-collected from the Polymarket Data API for the predefined study period.
-Market-level trade counts were cross-checked against independently extracted
-Dune records. The reconciled Polymarket API dataset, containing 6,725,732 trade
-observations across 360 markets, is the canonical research sample. Price-history records come from the CLOB price-history
+This dissertation draws on three linked public sources. Trade-level records
+were collected from the public Polymarket Data API separately for each of the
+360 condition IDs. Each request returned at most 1,000 records and was paginated
+by offset. Because the endpoint imposes a finite offset range, any time window
+that reached that range was divided recursively until all pages could be
+retrieved. Every request covered a half-open interval, $[s,e)$, so a timestamp
+at a boundary belonged to exactly one adjacent window. Successful responses
+were stored as resumable checkpoints before the consolidated file was built.
+
+The API does not supply a single fill-level trade ID. Transaction hash was
+retained as a field but was not used as a unique trade key because one
+transaction can contain multiple returned fills. Instead, exact identity of
+the complete API record was used to prevent the same response row from being
+written more than once when checkpoints and adjacent pages were consolidated.
+The resulting 6,725,732 API records across 360 markets form the sole canonical
+trade sample. Summed market-level counts were then compared with an independent
+Dune extraction: 350 markets agreed exactly and Dune contained one additional
+record in each of ten markets. This ten-record difference did not alter the
+canonical Polymarket sample, and Dune observations were not appended to it.
+
+The requests used the endpoint's default \texttt{takerOnly=true} setting. The
+returned \texttt{side} field records \texttt{BUY} or \texttt{SELL} from the
+reported user's perspective; it is used together with the outcome token to
+construct YES-equivalent direction and is not interpreted as a maker--taker
+role classification. Price-history records come from the CLOB price-history
 endpoint at one-minute fidelity; prices are never interpolated or resampled.
+The endpoint documents each observation as a timestamp and price value but does
+not identify that value as a contemporaneous midpoint or pre-trade quote.
+Accordingly, the outcome is described throughout as a recorded-price adjustment.
 Match timing and outcomes come from a separately reviewed FIFA fixture table.
 
 The observation window spans 2026-06-01T00:00:00Z to
@@ -20,9 +43,11 @@ contains 6,725,732 records across 360 binary markets: 312 home-win,
 away-win, or draw contracts nested in 104 FIFA World Cup matches, and 48
 country outright-winner contracts. The associated price dataset contains
 17,980,605 raw CLOB price-history points for the 720 corresponding YES and
-NO tokens. The data-collection report and data dictionary maintained alongside
-this dissertation remain the authority for full source coverage and field-level
-definitions and are not reproduced here.
+NO tokens. The collection report, data dictionary, dependency files and
+principal non-confidential outputs accompany the code at
+\url{https://github.com/andrew1004aa/polymarket-world-cup-2026}. The submitted
+version cites a fixed release tag, so later repository changes
+cannot silently alter the documented workflow.
 
 \subsection{Sample separation principles}
 
@@ -62,7 +87,7 @@ Sample & Size & Scope & Used for \\
 Canonical trade universe & 6,725,732 trades & 360 markets, full window & Source for every derived sample below \\
 Underlying pre-kickoff match panel & 748,481 market-minutes & 312 match markets, 104 events & H1, timing construction, RQ4, and supplementary analyses \\
 Past-only H2 samples & 422,314 expanding / 370,079 rolling market-minutes & 252 / 236 markets; 104 / 103 events & Primary H2 under strict-0 alignment \\
-Common horizon-check sample & 744,470 market-minutes & Same 312 markets/104 events & H2 1-/5-/15-minute horizon robustness, H3a persistence \\
+Common horizon-check sample & 744,470 market-minutes & Same 312 markets/104 events & H2 1-/5-/15-minute horizon robustness, H3a subsequent continuation \\
 Non-overlapping window sample & 149,438 market-minutes & Same 312 markets/104 events & H2 non-overlap robustness \\
 Country outright sample & 646,607 (5-minute) / 645,157 (30-minute, matched) & 48 outright markets & H2 country extension \\
 Pooled phase sample & 794,178 market-minutes & Pre- and post-kickoff, match markets & RQ4 phase interaction \\
@@ -84,3 +109,15 @@ across all 6,725,732 canonical trades in the full 360-market universe. The
 two proxies are conceptually and operationally distinct (Section~\ref{sec:wallet-heterogeneity-design}, Section~\ref{sec:whale-wallet-design})
 and are not interchangeable, even though both are evaluated over the same
 action sample.
+
+The 1,000-prior-trade eligibility rule limits the H2 conclusion to markets with
+adequate observable trading history. Expanding history includes 252 markets and
+excludes 60; rolling history includes 236 and excludes 76. Under expanding
+history, included markets average 18,878 trades and $4.76 million in recorded
+volume, compared with 9,309 trades and $1.60 million among excluded markets.
+Their mean baseline probabilities are also higher (0.367 versus 0.196), and
+their pre-kickoff analysis histories are longer (2,619 versus 1,473 observed
+market-minutes). Rolling-history comparisons show the same pattern. Stage shares
+are broadly similar, but the eligibility rule selects more active, longer-lived,
+and generally higher-probability contracts; the findings are not generalised to
+thin markets without sufficient prior history.

@@ -1,0 +1,5 @@
+unit_disposition,units,case_rows,share_of_35_units
+event_information,15,40,0.42857142857142855
+insufficient_data,1,5,0.02857142857142857
+not_anomalous_after_context,11,15,0.3142857142857143
+unusual_but_unresolved,8,13,0.22857142857142856

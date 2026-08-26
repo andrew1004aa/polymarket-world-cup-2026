@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-08-25T21:13:50.416741+00:00",
+  "status": "complete_qc_passed",
+  "outcome": "price change from minute 5 to minute 15",
+  "selection": "observed non-zero initial 0-to-5-minute recorded-price movement",
+  "interpretation": "descriptive outcome-selected robustness; not the primary estimand"
+}

@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-08-25T22:02:54.042267+00:00",
+  "status": "complete_qc_passed",
+  "source_transaction_actions": 2395771,
+  "collapsed_60s_sequences": 1844222,
+  "collapse_share": 0.23021774618692692,
+  "sequence_rule": "same wallet, market and YES-equivalent direction with adjacent transaction actions no more than 60 seconds apart",
+  "specifications": [
+    "whale_volume:expanding_top1_primary",
+    "whale_volume:rolling7_top1"
+  ],
+  "interpretation": "fragmented-execution robustness for high-activity and cumulative-gross-volume wallet classifications"
+}

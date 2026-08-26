@@ -77,7 +77,11 @@ The 73 audited case rows reduce to 35 linked or standalone event units after rel
 minutes and markets are grouped. The signed dispositions are 38 event-
 information cases (52.1\%), 18 not anomalous after context (24.7\%), 12 unusual
 but unresolved (16.4\%), and 5 insufficient-data cases (6.8\%). The 12 unresolved
-rows reduce further to eight candidate units. No audited case establishes
+rows reduce further to eight candidate units. At the independent-unit level,
+a conservative aggregation that prioritises an unresolved row within a linked
+unit yields 15 event-information units (42.9\%), 11 not-anomalous units
+(31.4\%), eight unresolved units (22.9\%), and one insufficient-data unit
+(2.9\%). No audited case establishes
 manipulation. The audit was performed and signed by the researcher and is not
 presented as independent external validation.
 
@@ -117,6 +121,16 @@ $t$ and Wilcoxon conclusions disagree, so no robust large-action wallet effect
 is claimed. The stable finding is persistent ordinary execution by wallets
 with high prior activity, not identified order splitting, herding, or market
 making.
+
+To distinguish a new behavioural decision from fragmented execution, adjacent
+same-wallet, same-market and same-direction transaction actions no more than 60
+seconds apart were consolidated into one sequence. This reduced 2,395,771
+actions to 1,844,222 sequences (23.0\% fewer). The high-activity contrast in
+same-direction continuation after an ordinary sequence remains 0.2764 under
+rolling history and 0.2799 under expanding history (paired $t$ and Wilcoxon
+$p<0.001$). After a large sequence it is $-0.0336$ and $-0.0273$ and fails the
+joint paired-test criterion. The stable ordinary-action result therefore is not
+solely a consequence of multiple fills inside one minute-long execution run.
 
 HA2 is supported as a conditional price association. Under rolling
 classification, high activity is associated with higher update incidence among
@@ -172,6 +186,16 @@ five minutes after a large action and 0.5782 more likely after an ordinary
 action. Conditional same-direction continuation is 0.1529 higher for ordinary
 whale actions, with both Holm-adjusted paired tests below 0.001. The large-action
 continuation contrast is not robust across the paired $t$ and Wilcoxon tests.
+
+The 60-second execution-sequence consolidation preserves this distinction.
+Whale-volume wallets remain 0.0715--0.0726 more likely to act again after a
+large sequence and 0.3685--0.3852 more likely after an ordinary sequence. Their
+ordinary-sequence same-direction contrast remains 0.2693--0.2705 (paired $t$
+and Wilcoxon $p<0.001$). The large-sequence same-direction contrasts are
+negative ($-0.0640$ expanding and $-0.0562$ rolling), and the rolling paired
+tests disagree at five per cent. Thus WH2's ordinary-activity component is not
+explained solely by fragmented fills, while no robust large-sequence directional
+continuation is established.
 
 WH3 is not robustly supported. The primary expanding update interaction is
 positive ($0.003203$, $p=0.0137$), but the directional interaction is not

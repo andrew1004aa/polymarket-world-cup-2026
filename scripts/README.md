@@ -82,6 +82,19 @@ ground-truth manipulation label.
 
 ## Robustness and reporting
 
+Final supervisor-requested v6 checks are:
+
+| Script | Function |
+|---|---|
+| `build_v6_supervisor_diagnostics.py` | Timestamp gaps, H2 market inclusion, logit AMEs, and 35-unit audit dispositions |
+| `build_v6_threshold_sensitivity.py` | Past-only P95/P97.5/P99/P99.5 flow panels |
+| `run_v6_threshold_sensitivity.py` | Signed-log, `asinh`, raw-flow, standardised, and common-value comparisons |
+| `build_v6_executed_price_robustness.py` | Executed-trade-price outcome construction |
+| `run_v6_executed_price_robustness.py` | 60/300/900-second executed-price models |
+| `run_v6_h3a_conditional_continuation.py` | Descriptive H3a check conditional on an observed initial update |
+| `run_v6_country_large_ordinary_clustering.py` | Market, date, and two-way country covariance estimates |
+| `run_v6_wallet_60s_sequence_robustness.py` | Collapse adjacent actions into 60-second execution sequences |
+
 - `run_v3_streaming_wild_cluster_bootstrap.py`: memory-safe wild-cluster
   bootstrap implementation.
 - `run_phase_interaction_v3.py`: phase interaction / difference-in-differences
@@ -94,4 +107,3 @@ ground-truth manipulation label.
 Scripts labelled `prototype`, workbook-inspection utilities, and internal draft
 audits are development aids and are not required to reproduce the submitted
 estimates.
-

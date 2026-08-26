@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-08-25T21:36:06.580941+00:00",
+  "status": "complete_qc_passed",
+  "source_transaction_actions": 2395771,
+  "collapsed_60s_sequences": 1844222,
+  "collapse_share": 0.23021774618692692,
+  "sequence_rule": "same wallet, market and YES-equivalent direction with adjacent transaction actions no more than 60 seconds apart",
+  "specifications": [
+    "rolling_7d",
+    "expanding"
+  ],
+  "interpretation": "fragmented-execution robustness"
+}

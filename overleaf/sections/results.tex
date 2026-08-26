@@ -75,6 +75,19 @@ Correcting the timing convention changes the five-minute outcome in 11,917
 rows, but the H2 coefficient ordering is unchanged in strict-0, strict-1, and
 above-median-volume market samples.
 
+Within the eligible strict-0 samples, the recorded baseline precedes the focal
+minute by a median of 56 seconds (maximum 58), while the five-minute outcome is
+recorded a median of four seconds after its target (maximum 56); every retained
+baseline and five-minute outcome is within 60 seconds of its target. As an
+alternative to the CLOB history record, prices were reconstructed from executed
+YES-equivalent trade prices, excluding the focal minute from the baseline. The
+large-minus-ordinary contrast remains positive at 60-, 300-, and 900-second
+matching tolerances: 0.000092--0.000091 under expanding history and
+0.000087--0.000087 under rolling history (all $p<0.001$). Thus the main ordering
+does not depend only on the price-history endpoint's recording mechanism,
+although the primary outcome remains a recorded-price adjustment rather than a
+quote-midpoint response.
+
 The pre-specified lead--lag path in Table~\ref{tab:v5-leadlag} provides a more
 direct timing diagnostic. Large-minus-ordinary contrasts at $-15$, $-5$, and
 $-1$ minutes are close to zero and insignificant under both P99 definitions.
@@ -117,6 +130,11 @@ positive large-minus-ordinary differences of 0.00641 (expanding) and 0.00605
 (rolling), both significant. In converged market-fixed-effects logit models,
 however, large and ordinary absolute flow are each positively associated with
 update odds, while their difference is insignificant ($p=0.986$ and $p=0.511$).
+Average marginal effects lead to the same conclusion. Under expanding history,
+the large- and ordinary-flow marginal effects are 0.005615 and 0.005606, a
+difference of 0.000008; under rolling history they are 0.005545 and 0.005894,
+a difference of $-0.000349$. Thus, comparing effects on update probability does
+not restore the linear-probability model's positive large-flow differential.
 The claim that large flow is uniquely more likely to trigger an update is
 therefore model-sensitive. Complementary log-log specifications did not produce
 a stable finite solution and are not interpreted. Table~\ref{tab:v5-mechanism}
@@ -126,11 +144,11 @@ because the sample is selected on the realised outcome.
 
 \input{tables/table_v5_mechanism}
 
-\subsection{Persistence (H3a) and forecast improvement (H3b)}
+\subsection{Subsequent continuation (H3a) and forecast improvement (H3b)}
 
-Table~\ref{tab:h3} distinguishes movement from minute 5 to minute 15 (H3a) from ex-post forecast improvement (H3b). Both flow components predict continuation in the original direction. The large-minus-ordinary continuation difference is 0.000016 ($p=0.0065$), which is inconsistent with average reversal over the measured interval, so H3a is supported. The Brier-improvement coefficients are not statistically distinguishable from zero, and the corresponding large--ordinary equality tests are also insignificant, so H3b is not supported.
+Table~\ref{tab:h3} distinguishes subsequent movement from minute 5 to minute 15 (H3a) from ex-post forecast improvement (H3b). Both flow components predict continuation in the original direction. The large-minus-ordinary continuation difference is 0.000016 ($p=0.0065$), which is inconsistent with average reversal over the measured later interval, so H3a is supported. This is not strict persistence of an observed initial movement: when the initial five-minute price change is zero, the later movement may instead represent delayed adjustment. In the descriptive, outcome-selected sample restricted to a non-zero initial five-minute movement, the large-minus-ordinary differences are positive but insignificant under expanding history (0.000108, $p=0.161$) and rolling history (0.000085, $p=0.317$). The Brier-improvement coefficients are not statistically distinguishable from zero, and the corresponding large--ordinary equality tests are also insignificant, so H3b is not supported.
 
-In magnitude terms, a ten-fold increase in large-trade net flow at minute 0 is associated with a further 0.0076 percentage-point move in the same direction between minutes 5 and 15, compared with 0.0038 percentage points for ordinary flow (difference $=0.0000161$, $p=0.0065$). This is a modest but statistically distinguishable continuation, not a reversal. The Brier-improvement equality tests are insignificant across the 0--5, 0--15 and 5--15 minute windows (minimum $p=0.138$), so H3b is not supported. Neither result is evidence of informed trading, manipulation, or the absence of manipulation; together they qualify the interpretation of the primary H2 directional association.
+In magnitude terms, a tenfold increase in large-trade net flow at minute 0 is associated with a further 0.0076 percentage-point move in the same direction between minutes 5 and 15, compared with 0.0038 percentage points for ordinary flow (difference $=0.0000161$, $p=0.0065$). This is a modest but statistically distinguishable subsequent continuation, not a reversal. The Brier-improvement equality tests are insignificant across the 0--5, 0--15 and 5--15 minute windows (minimum $p=0.138$), so H3b is not supported. Neither result is evidence of informed trading, manipulation, or the absence of manipulation; together they qualify the interpretation of the primary H2 directional association.
 
 \input{tables/table_3_h3}
 
@@ -158,7 +176,7 @@ informed trading or manipulation.}
 \label{fig:h4-timing}
 \end{figure}
 
-In magnitude terms, a ten-fold increase in large-trade net flow is associated with implied probability moves ranging from 0.0210 percentage points 6--12 hours before kickoff to 0.0437 percentage points more than 24 hours before kickoff, against a narrower 0.0056 to 0.0187 percentage-point range for ordinary flow across the same bands. RQ4's answer for pre-kickoff timing is therefore that the flow--price association varies significantly across bands for both large and ordinary flow, with a large-minus-ordinary gap that is positive throughout but not monotonic in time to kickoff. The dip 6--12 hours before kickoff and the recovery in the final hour is an unexpected pattern relative to a simple story in which anticipation of the match builds steadily. One plausible explanation is the scheduled release of pre-match information, including team lineups, but because announcement timestamps are not observed in this dataset, this mechanism cannot be tested directly and no monotonic-approach-to-kickoff claim is supported.
+In magnitude terms, a tenfold increase in large-trade net flow is associated with implied probability moves ranging from 0.0210 percentage points 6--12 hours before kickoff to 0.0437 percentage points more than 24 hours before kickoff, against a narrower 0.0056 to 0.0187 percentage-point range for ordinary flow across the same bands. RQ4's answer for pre-kickoff timing is therefore that the flow--price association varies significantly across bands for both large and ordinary flow, with a large-minus-ordinary gap that is positive throughout but not monotonic in time to kickoff. The dip 6--12 hours before kickoff and the recovery in the final hour is an unexpected pattern relative to a simple story in which anticipation of the match builds steadily. One plausible explanation is the scheduled release of pre-match information, including team lineups, but because announcement timestamps are not observed in this dataset, this mechanism cannot be tested directly and no monotonic-approach-to-kickoff claim is supported.
 
 Table~\ref{tab:phase} formally compares the pre-kickoff and post-kickoff/pre-resolution phases at the common five-minute horizon. Both the large- and ordinary-flow coefficients increase after kickoff, but the change in the large-minus-ordinary gap is not significant ($p=0.734$). RQ4's phase comparison therefore shows timing heterogeneity and a stronger overall post-kickoff flow--price association, but no phase-specific change in the relative large-trade premium. Post-kickoff estimates remain vulnerable to common shocks from goals, cards, substitutions, and VAR decisions.
 
@@ -169,6 +187,13 @@ Table~\ref{tab:phase} formally compares the pre-kickoff and post-kickoff/pre-res
 Table~\ref{tab:country} presents the separate secondary analysis of 48 country outright markets. At five minutes, the large-flow coefficient is 0.000091 and the ordinary-flow coefficient is 0.000017; their difference is significant ($p<0.001$). At thirty minutes, the respective coefficients are 0.000068 and 0.000016, with a difference-test $p$-value of 0.034. Excluding the four markets with fewer than five P99 trades changes the focal estimates by no more than about 0.06\%. Match and outright magnitudes are not directly comparable because their horizons, information environments, and clustering structures differ.
 
 Using the same tenfold-net-flow scaling, the five-minute country coefficients imply a 0.0209 percentage-point move for large-trade flow against 0.0038 percentage points for ordinary flow; at thirty minutes the corresponding figures are 0.0156 and 0.0038 percentage points. On this evidence, H2's large-versus-ordinary prediction is supported in the secondary country panel at both horizons, reinforcing the match-market conclusion in a structurally different set of markets without pooling the two families or treating the country result as an independent replication sample.
+
+Because all 48 outright markets share tournament-level news, inference was also
+recomputed with calendar-date clustering and two-way market-and-date covariance.
+The five-minute large-minus-ordinary contrast is 0.000074 under market,
+calendar-date, and two-way clustering; the corresponding $p$-values are below
+$0.001$ in all three cases. This addresses observable calendar-time dependence
+without converting the country extension into an independent replication.
 
 \input{tables/table_5_country}
 
@@ -182,7 +207,21 @@ volume markets yields large-minus-ordinary contrasts of 0.0000803 under
 expanding history and 0.0000805 under rolling history (both $p<0.001$). The
 lead--lag placebo tests and event-by-time fixed effects address temporal ordering
 and shared match shocks, while the logit comparison exposes functional-form
-sensitivity in the update-incidence result. Further covariance and
+sensitivity in the update-incidence result.
+
+The H2 ordering is also not unique to P99 or the signed-log transformation.
+Across past-only P95, P97.5, P99, and P99.5 definitions, the large-minus-ordinary
+contrast is positive and significant under both expanding and rolling histories
+for signed-log, \texttt{asinh}, and winsorised raw flow scaled in $1,000 units
+(all 24 tests $p<0.001$). Under primary expanding P99, a one-standard-deviation
+change implies 0.0224 percentage points for large flow and 0.0059 percentage
+points for ordinary flow. At a common positive $1,000 value, signed-log effects
+are 0.0696 and 0.0133 percentage points; the winsorised raw-flow specification
+gives 0.0181 and 0.0045 percentage points. The equality conclusion therefore
+survives common scaling, although these alternative functional forms estimate
+different response shapes.
+
+Further covariance and
 non-overlapping-window checks are retained in the appendix as secondary evidence.
 All statistical significance denotes conditional association rather than causal
 price impact, private information, institutional trading, manipulation, or a

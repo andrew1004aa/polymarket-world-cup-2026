@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-08-25T21:20:42.093812+00:00",
+  "status": "complete_qc_passed",
+  "models": 6,
+  "price_source": "executed Data API YES-equivalent trade prices",
+  "fixed_effects": [
+    "market_id",
+    "calendar_hour_utc"
+  ],
+  "cluster": "event_id CRV1",
+  "interpretation": "price-source robustness; sparse executed-price coverage is reported separately"
+}

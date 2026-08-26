@@ -1,0 +1,51 @@
+specification,variable,included,category,markets,share_within_group
+expanding,stage,0,Group stage,40,0.6666666666666666
+expanding,stage,0,Round of 16,5,0.08333333333333333
+expanding,stage,0,Round of 32,14,0.23333333333333334
+expanding,stage,0,Third-place match,1,0.016666666666666666
+expanding,stage,1,Final,3,0.011904761904761904
+expanding,stage,1,Group stage,176,0.6984126984126984
+expanding,stage,1,Quarter-final,12,0.047619047619047616
+expanding,stage,1,Round of 16,19,0.07539682539682539
+expanding,stage,1,Round of 32,34,0.1349206349206349
+expanding,stage,1,Semi-final,6,0.023809523809523808
+expanding,stage,1,Third-place match,2,0.007936507936507936
+expanding,market_role,0,away_win,12,0.2
+expanding,market_role,0,draw,42,0.7
+expanding,market_role,0,home_win,6,0.1
+expanding,market_role,1,away_win,92,0.36507936507936506
+expanding,market_role,1,draw,62,0.24603174603174602
+expanding,market_role,1,home_win,98,0.3888888888888889
+expanding,market_subtype,0,Match draw,42,0.7
+expanding,market_subtype,0,Match winner,18,0.3
+expanding,market_subtype,1,Match draw,62,0.24603174603174602
+expanding,market_subtype,1,Match winner,190,0.753968253968254
+expanding,yes_outcome_won,0,0.0,45,0.75
+expanding,yes_outcome_won,0,1.0,15,0.25
+expanding,yes_outcome_won,1,0.0,163,0.6468253968253969
+expanding,yes_outcome_won,1,1.0,89,0.3531746031746032
+rolling7,stage,0,Group stage,56,0.7368421052631579
+rolling7,stage,0,Round of 16,5,0.06578947368421052
+rolling7,stage,0,Round of 32,14,0.18421052631578946
+rolling7,stage,0,Third-place match,1,0.013157894736842105
+rolling7,stage,1,Final,3,0.012711864406779662
+rolling7,stage,1,Group stage,160,0.6779661016949152
+rolling7,stage,1,Quarter-final,12,0.05084745762711865
+rolling7,stage,1,Round of 16,19,0.08050847457627118
+rolling7,stage,1,Round of 32,34,0.1440677966101695
+rolling7,stage,1,Semi-final,6,0.025423728813559324
+rolling7,stage,1,Third-place match,2,0.00847457627118644
+rolling7,market_role,0,away_win,18,0.23684210526315788
+rolling7,market_role,0,draw,48,0.631578947368421
+rolling7,market_role,0,home_win,10,0.13157894736842105
+rolling7,market_role,1,away_win,86,0.3644067796610169
+rolling7,market_role,1,draw,56,0.23728813559322035
+rolling7,market_role,1,home_win,94,0.3983050847457627
+rolling7,market_subtype,0,Match draw,48,0.631578947368421
+rolling7,market_subtype,0,Match winner,28,0.3684210526315789
+rolling7,market_subtype,1,Match draw,56,0.23728813559322035
+rolling7,market_subtype,1,Match winner,180,0.7627118644067796
+rolling7,yes_outcome_won,0,0.0,58,0.7631578947368421
+rolling7,yes_outcome_won,0,1.0,18,0.23684210526315788
+rolling7,yes_outcome_won,1,0.0,150,0.635593220338983
+rolling7,yes_outcome_won,1,1.0,86,0.3644067796610169

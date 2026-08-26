@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-08-25T21:14:16.013780+00:00",
+  "status": "complete_qc_passed",
+  "models": 24,
+  "percentiles": [
+    "p95",
+    "p975",
+    "p99",
+    "p995"
+  ],
+  "specifications": [
+    "expanding",
+    "rolling7"
+  ],
+  "transformations": [
+    "signed_log",
+    "asinh",
+    "raw_scaled_winsor"
+  ],
+  "fixed_effects": [
+    "market_id",
+    "calendar_hour_utc"
+  ],
+  "cluster": "event_id CRV1"
+}

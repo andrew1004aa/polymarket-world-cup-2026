@@ -1,0 +1,3 @@
+model,outcome,contrast,estimate,std_error,t_statistic,cluster_df,p_value,conf_low,conf_high,weights,specification
+EXPANDING_CONDITIONAL_INITIAL_UPDATE,delta_5_to_15,large_minus_ordinary,0.00010846499069294405,7.678711444836193e-05,1.412541563414067,103,0.16080501998846172,-4.3824140173108004e-05,0.0002607541215589961,"{""expanding_signed_log_large_net_flow"": 1, ""expanding_signed_log_ordinary_net_flow"": -1}",expanding
+ROLLING7_CONDITIONAL_INITIAL_UPDATE,delta_5_to_15,large_minus_ordinary,8.521641542855024e-05,8.468101216020994e-05,1.0063225893819898,101,0.3166652644094126,-8.27679337553189e-05,0.00025320076461241936,"{""rolling7_signed_log_large_net_flow"": 1, ""rolling7_signed_log_ordinary_net_flow"": -1}",rolling7

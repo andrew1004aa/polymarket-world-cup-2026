@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-08-25T21:21:59.782574+00:00",
+  "status": "complete_qc_passed",
+  "scope": "secondary 48-country outright extension",
+  "formula": "delta_yes_price ~ p99_signed_log_large_net_flow + p99_signed_log_ordinary_net_flow + yes_price_t + lagged_30m_price_change + log_lagged_30m_volume | market_id + calendar_hour_utc",
+  "covariances": [
+    "market",
+    "date",
+    "market_date_two_way"
+  ],
+  "interpretation": "secondary extension, not independent replication"
+}

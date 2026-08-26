@@ -20,7 +20,7 @@ H1 and H2 are primary. Within that pair, H1 is a baseline validation of the sign
 \begin{description}
   \item[H1 (baseline).] Greater signed total trade flow is associated with a short-horizon probability change in the same direction. This result validates the signed-flow construction; it is not, by itself, the dissertation's central finding.
   \item[H2 (primary contribution).] Conditional on the common controls and fixed effects, signed flow from individual trades classified by a past-only, market-specific P99 threshold has a larger five-minute directional-price association than signed flow from ordinary trades. Whether the difference operates through update incidence or conditional update magnitude is evaluated as a mechanism decomposition rather than built into the hypothesis.
-  \item[H3a.] Price movements associated with large-trade flow persist from minute five to minute fifteen rather than reversing.
+  \item[H3a.] Large-trade flow is associated with subsequent same-direction continuation from minute five to minute fifteen rather than reversal over that later interval.
   \item[H3b.] Large-trade-associated price movements improve forecast accuracy relative to the eventual resolved outcome, measured by Brier-score improvement, relative to ordinary-trade-associated movements.
 \end{description}
 
@@ -54,6 +54,15 @@ Trade direction is expressed in YES-probability terms. BUY YES and SELL NO recei
 
 A YES-token history is retained as observed, whereas a NO-token price is converted to one minus the NO price. YES and NO histories are not treated as independent markets. The YES history is primary and the NO-equivalent series is used for complementarity and data-quality checks.
 
+The CLOB history documentation labels each observation only as a timestamp and
+price value; it does not state that the value is a contemporaneous midpoint or
+pre-trade quote. The primary dependent variable is therefore termed a
+recorded-price adjustment. A robustness series instead uses the last executed
+YES-equivalent trade price strictly before the focal minute and the first
+executed trade price at or after the target horizon, with 60-, 300-, and
+900-second matching tolerances. The focal minute is excluded from the executed-
+price baseline.
+
 For each binary market, trade value is executed token price multiplied by
 shares. The primary expanding-history threshold for UTC day $d$ is the linearly
 interpolated P99 of unsigned USDC trade value in the same market from 1 June to
@@ -62,11 +71,15 @@ trades. The principal definition robustness instead uses the preceding seven
 complete UTC days. A trade is large when its value is at or above the applicable
 threshold; ties are included. Both definitions are past-only, so a trade is
 never classified using later observations. Models are estimated separately and
-on their common support. Classification occurs before applying YES-equivalent
+on their common support. Past-only P95, P97.5, and P99.5 thresholds test whether
+the finding depends on the P99 boundary. Signed-log flow is also replaced by
+\texttt{asinh} flow and winsorised raw flow scaled in $1,000 units;
+standardised and common-value effects permit comparison despite the different
+sparsity and scale of the large and ordinary components. Classification occurs before applying YES-equivalent
 direction and does not represent wallet wealth, ownership, institutional status,
 profitability, information, or intent.
 
-\subsection{Price response, persistence, and forecast improvement}
+\subsection{Price response, subsequent continuation, and forecast improvement}
 
 Let $p^-_{m,t}$ be the latest available YES-equivalent CLOB price strictly
 before $t$, and let $p^+_{m,t+h}$ be the first observed price at or after the
@@ -97,7 +110,7 @@ For $h_2>h_1$, subsequent movement is
   \left(p_{m,t+h_2}-p_{m,t+h_1}\right).
 \end{equation}
 
-A negative value denotes movement against the initial flow direction. It is evidence of reversal but not, by itself, proof of manipulation. Let $y_m\in\{0,1\}$ be the resolved outcome. Forecast improvement is measured by the change in Brier loss,
+A negative value denotes movement against the initial flow direction. A positive value is termed subsequent same-direction continuation, not strict persistence of the initial price movement: it can reflect delayed adjustment when no initial update occurred. A separate descriptive specification therefore conditions on a non-zero initial movement from minute zero to minute five. This conditional sample is outcome-selected and is not used as the primary H3a test. Reversal is not, by itself, proof of manipulation. Let $y_m\in\{0,1\}$ be the resolved outcome. Forecast improvement is measured by the change in Brier loss,
 
 \begin{equation}
   \text{BrierImprovement}_{m,t}(h)=
@@ -140,7 +153,7 @@ Primary standard errors are clustered by match event because the home-win, away-
 \label{sec:wallet-heterogeneity-design}
 
 Secondary wallet tests distinguish an unusually large individual trade from
-past observed-wallet activity and cumulative capital deployment. High activity
+past observed-wallet activity and cumulative gross trading volume. High activity
 is classified daily using a rolling seven-day top one per cent with minimum
 history requirements; expanding history is a robustness definition. Four
 large/ordinary by high/other activity cells are compared using price and
@@ -150,10 +163,10 @@ are reported in Appendix~\ref{sec:wallet-methods-appendix}.
 \subsection{Past-only whale-wallet design}
 \label{sec:whale-wallet-design}
 
-The past-only whale proxy instead ranks wallets by cumulative gross USDC before
+The past-only whale proxy instead ranks wallets by cumulative gross trading volume before
 each evaluation day and imposes no minimum trade-frequency requirement. Rolling
 windows, alternative percentiles, and continuous standardised cumulative volume
-provide robustness. These measures describe prior observed capital deployment,
+provide robustness. These measures describe prior observed gross trading volume,
 not ownership, wealth, institutional status, or intent. Detailed WH1--WH4 and
 outcome definitions are also provided in Appendix~\ref{sec:wallet-methods-appendix}.
 
@@ -167,6 +180,14 @@ establish causality. The empirical language therefore remains associative.
 \subsection{Reproducibility}
 
 Analytical scripts read immutable inputs from \texttt{regression\_ready/} and write versioned outputs to separate, immutable analysis directories. Every filtering rule, time horizon, matching tolerance, threshold, transformation, and model count is logged. The earlier wallet-based artifacts described above remain unchanged as an audit trail and secondary high-activity-wallet analysis. The data-collection report and data dictionary remain the authority for source coverage and field definitions.
+
+The complete reproducibility package, including the data-collection,
+sample-construction, regression, machine-learning, and audit code, is available
+at the following public repository:
+\url{https://github.com/andrew1004aa/polymarket-world-cup-2026}.
+The fixed snapshot corresponding to this revision is release
+\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/releases/tag/v0.3-supervisor-revision}.
+The final submitted version will receive a separate submission tag.
 
 Detailed specifications for the supplementary concentration, reversal-
 prediction, wallet-sequence, and anomaly-screening analyses are reported in

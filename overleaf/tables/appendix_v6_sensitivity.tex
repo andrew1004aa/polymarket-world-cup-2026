@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\caption{Past-only threshold and executed-price sensitivity}
+\label{tab:v6-sensitivity}
+\small
+\begin{tabular}{llrr}
+\toprule
+Panel / definition & History & Large--ordinary contrast & $p$-value \\
+\midrule
+\multicolumn{4}{l}{\textit{Panel A: recorded CLOB price, signed-log flow}} \\
+P95   & Expanding & 0.000048 & $<0.001$ \\
+P97.5 & Expanding & 0.000061 & $<0.001$ \\
+P99   & Expanding & 0.000082 & $<0.001$ \\
+P99.5 & Expanding & 0.000103 & $<0.001$ \\
+P95   & Rolling 7-day & 0.000049 & $<0.001$ \\
+P97.5 & Rolling 7-day & 0.000060 & $<0.001$ \\
+P99   & Rolling 7-day & 0.000081 & $<0.001$ \\
+P99.5 & Rolling 7-day & 0.000103 & $<0.001$ \\
+\midrule
+\multicolumn{4}{l}{\textit{Panel B: executed-price P99 robustness}} \\
+60-second tolerance  & Expanding / rolling & 0.000092 / 0.000087 & $<0.001$ / $<0.001$ \\
+300-second tolerance & Expanding / rolling & 0.000090 / 0.000086 & $<0.001$ / $<0.001$ \\
+900-second tolerance & Expanding / rolling & 0.000091 / 0.000087 & $<0.001$ / $<0.001$ \\
+\bottomrule
+\multicolumn{4}{p{0.92\textwidth}}{\footnotesize Notes: Panel A uses the same strict-0 sample rule at each threshold. The \texttt{asinh} and winsorised raw-flow specifications also produce positive contrasts in all eight threshold/history combinations. Panel B uses the last executed YES-equivalent trade price strictly before the focal minute and excludes that minute from the baseline. Standard errors are clustered by match event.}
+\end{tabular}
+\end{table}

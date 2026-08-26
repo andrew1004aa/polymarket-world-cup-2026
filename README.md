@@ -21,14 +21,18 @@ dissertation itself.
   the highest available one-minute API fidelity, without interpolation,
   resampling, or gap filling.
 
-Trade-level data were collected from the Polymarket Data API for the predefined
-study period. Market-level trade counts were cross-checked against independently
-extracted Dune records. The reconciled Polymarket API dataset was used as the
-canonical research sample. Dune was a coverage cross-check, not the source of
-the trade-level analysis file.
+Trade-level data were collected from the Polymarket Data API separately by
+condition ID. Requests used 1,000-record offset pages and half-open time
+intervals, `[start,end)`. A saturated interval was divided recursively before
+collection continued, and every successful request was checkpointed. Summed
+market-level counts were cross-checked against independently extracted Dune
+records: 350 markets agreed exactly and Dune had one additional record in each
+of ten markets. The 6,725,732 Polymarket API observations remain the canonical
+sample; Dune records were not appended.
 
-The Data API records represent the trade observations returned by Polymarket;
-the analysis does not require or infer maker/taker roles.
+The requests did not override the endpoint's default `takerOnly=true` setting.
+The API `side` field is retained as BUY/SELL and combined with the outcome token
+to form YES-equivalent direction; the analysis does not infer maker/taker roles.
 
 ## Repository map
 
@@ -38,6 +42,8 @@ the analysis does not require or infer maker/taker roles.
 | `scripts/README.md` | Exact script map and recommended execution order |
 | `overleaf/` | Complete LaTeX source for the dissertation |
 | `regression_results/v5/` | Frozen v5 coefficient files and diagnostics |
+| `regression_results/v6/` | Supervisor-requested sensitivity and audit diagnostics |
+| `docs/source_hashes/` | SHA-256 manifests for the local canonical trade and price partitions |
 | `docs/data_dictionary.md` | Raw and derived variable definitions |
 | `docs/data_collection_report.md` | Collection coverage, limitations, and checkpoints |
 | `docs/research_design/` | Frozen empirical specifications |
@@ -179,6 +185,25 @@ These scripts produce the main large-versus-ordinary flow contrasts, strict
 price-timing checks, lead/lag estimates, shared event-time fixed-effects
 robustness, and binary update-incidence models. The frozen outputs are under
 `regression_results/v5/`.
+
+Supervisor-requested v6 checks are run after the v5 inputs are frozen:
+
+```bash
+python scripts/build_v6_supervisor_diagnostics.py
+python scripts/build_v6_threshold_sensitivity.py
+python scripts/run_v6_threshold_sensitivity.py
+python scripts/build_v6_executed_price_robustness.py
+python scripts/run_v6_executed_price_robustness.py
+python scripts/run_v6_h3a_conditional_continuation.py
+python scripts/run_v6_country_large_ordinary_clustering.py
+python scripts/run_v6_wallet_60s_sequence_robustness.py
+```
+
+These commands produce timestamp-gap distributions, included/excluded-market
+comparisons, logit average marginal effects, P95/P97.5/P99/P99.5 and flow-
+transformation sensitivities, executed-price checks, conditional-continuation
+estimates, country market-and-time covariance checks, a 60-second execution-
+sequence robustness test, and the 35-unit audit disposition table.
 
 ### 7. Machine learning and integrity screening
 

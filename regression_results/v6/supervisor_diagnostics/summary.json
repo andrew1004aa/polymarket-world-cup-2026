@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-08-25T20:49:47.878729+00:00",
+  "status": "complete_qc_passed",
+  "strict_rows": 748481,
+  "match_markets": 312,
+  "expanding_included_markets": 252,
+  "rolling7_included_markets": 236,
+  "audit_rows": 73,
+  "audit_units": 35,
+  "unresolved_audit_units": 8,
+  "notes": [
+    "No model was estimated by this script.",
+    "AME standard errors use the fitted average link derivative as a delta-method approximation."
+  ]
+}
