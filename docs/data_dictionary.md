@@ -56,7 +56,7 @@
 
 ## `intermediate/market_partitions/csv/{market_id}.csv.gz`
 
-**Unit:** one canonical Data API trade record  
+**Unit:** one retained canonical Data API trade record
 **Files:** 360  
 **Rows across files:** 6,725,732
 
@@ -80,7 +80,9 @@ The canonical trade value is not stored as a separate column in the partition fi
 ## `trades.csv`
 
 **Unit:** one collected Data API record before compact market partitioning  
-**Rows:** 6,725,732 retained unique rows
+**Rows:** 6,725,732 retained records (from 6,725,954 in-window API rows after
+removing 222 later responses identical to a previously retained complete API
+object)
 
 | Field | Type | Definition |
 |---|---|---|

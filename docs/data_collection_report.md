@@ -18,7 +18,9 @@ This report documents collection, preservation, organization and structural qual
 | Outright winner markets | 48 |
 | FIFA match events | 104 |
 | Event–market mappings | 312 |
-| Data API trade rows | 6,725,732 |
+| Raw in-window Data API rows | 6,725,954 |
+| Exact repeated API responses removed | 222 |
+| Retained canonical Data API trade records | 6,725,732 |
 | Market-partitioned trade files | 360 |
 | Unique wallets | 335,414 |
 | Wallet–market rows | 2,497,766 |
@@ -62,9 +64,34 @@ to assess the completeness of the API extraction. No Dune observations were
 incorporated into or used to modify the canonical dataset. The canonical sample
 contains 6,725,732 trade observations across 360 markets.
 
+Each complete in-window API object was canonically serialised and hashed with
+SHA-256. The first occurrence was retained and 222 later byte-equivalent
+complete-object responses were removed. The repeated deliveries affected 39
+markets; all 222 were across checkpoints and none occurred within a checkpoint.
+No transaction-hash deduplication and no aggregation into inferred economic
+trades, orders or executions was performed. Every retained record has a unique
+non-empty transaction hash. Requests explicitly set `takerOnly=true`.
+A validation request for the same market, time window, limit and offset returned
+10 records both with the endpoint default and with explicit `takerOnly=true`;
+the two complete JSON responses had the same SHA-256 digest. The explicit
+parameter therefore did not alter the checked response.
+
+Dune query `8139394` supplied market-level counts for 312 match contracts and
+query `8140259` for 48 outright contracts. The local exports were downloaded on
+2026-07-31 at 13:52 BST. Of 360 comparisons, 350 matched exactly and Dune was
+one record higher in each of ten markets. The canonical API total is 6,725,732,
+the Dune total is 6,725,742, and the aggregate difference is ten. Dune supplied
+no trade-level observations to the canonical or regression datasets. Query
+`8142697` was used only as an auxiliary 104-match mapping based on the official
+FIFA workbook; CLOB price history is a separate Polymarket source.
+
 ### Trade QC
 
-- Included Data API rows: 6,725,732
+- Raw in-window Data API rows: 6,725,954
+- Exact cross-checkpoint response duplicates removed: 222
+- Retained Data API trade records: 6,725,732
+- Markets affected by repeated deliveries: 39
+- Same-checkpoint repeated deliveries: 0
 - Missing timestamps: 0
 - Missing condition IDs: 0
 - Missing token IDs: 0

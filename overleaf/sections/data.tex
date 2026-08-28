@@ -14,15 +14,36 @@ counts were used solely to assess the completeness of the API extraction. No
 Dune observations were incorporated into or used to modify the canonical
 dataset.
 
-No additional trade-level deduplication based on transaction hash or a
-synthetic trade identifier was applied to construct the canonical sample. The
-canonical dataset consists of the Polymarket Data API records collected for the
-selected markets and study window; accordingly, there is no separate
-before-versus-after deduplication count in the final research workflow.
+Within the study window, the API returned 6,725,954 rows. Each complete API
+object was serialised with keys in canonical order and hashed using SHA-256.
+The first occurrence of each object was retained, while 222 later responses
+that were identical to a previously retained complete object were removed.
+These repeated deliveries affected 39 markets: none occurred within the same
+checkpoint and all 222 occurred across checkpoints. This exact-response check
+left 6,725,732 canonical Data API trade records. It was not transaction-hash
+deduplication and did not aggregate records into inferred economic trades,
+orders, or executions. Indeed, no transaction-hash deduplication or
+economic-trade aggregation was applied.
+
+The methodological observation unit is therefore a retained Data API trade
+record. Collection requests explicitly set \texttt{takerOnly=true}. The API
+does not provide a separate independent fill-level trade identifier, but every
+retained record in this sample has a non-empty transaction hash and all
+6,725,732 hashes are unique. This transaction-hash diagnostic describes this
+sample; it was not used as a deduplication or execution-aggregation rule.
+
+Completeness was assessed separately using Dune Analytics query 8139394 for
+the 312 match contracts and query 8140259 for the 48 country outright
+contracts. Across all 360 markets, 350 API and Dune counts agreed exactly;
+Dune reported one additional record in each of ten markets. The corresponding
+totals were 6,725,732 canonical API records and 6,725,742 Dune records, an
+aggregate difference of ten. Dune served only as an external market-level
+count check and supplied no trade-level observations to the canonical or
+regression datasets.
 
 The observation window spans 2026-06-01T00:00:00Z to
 2026-08-01T00:00:00Z, with the end point excluded. The final canonical sample
-contains 6,725,732 Polymarket Data API trade records across 360 binary markets:
+contains 6,725,732 retained Polymarket Data API trade records across 360 binary markets:
 312 home-win, away-win, or draw contracts nested in 104 FIFA World Cup matches,
 and 48 country outright-winner contracts.
 
@@ -34,7 +55,11 @@ timestamp and price value but does not identify that value as a contemporaneous
 midpoint or pre-trade quote. The outcome is therefore described throughout as
 a recorded-price adjustment, and the executed-trade-price robustness checks
 provide a separate validation. Match schedules, actual kickoff information,
-and outcomes come from the separately reviewed FIFA fixture table.
+and outcomes come from the official FIFA workbook,
+\texttt{world-cup\_2026.xlsx}, and its reviewed 104-event table. Dune query
+8142697 was used only as an auxiliary mapping of those 104 matches; it was not
+a trade-data source. These roles are distinct from the Polymarket CLOB
+\texttt{/prices-history} source described above.
 
 The public reproducibility repository contains the code and fixed research
 materials described in Section~4.10:

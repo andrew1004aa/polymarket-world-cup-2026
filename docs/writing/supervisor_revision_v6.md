@@ -53,9 +53,11 @@ Generated: 2026-08-25
 
 ## Word-count check
 
-The supplied dissertation outline specifies 8,000–11,000 words. The current
-seven main chapters contain approximately 10,063 words. The Abstract is about
-198 words (maximum 300) and the Impact Statement about 284 words (maximum 500).
+The final IFTE0008-method count is 10,383 words for the seven main chapters.
+The count excludes the title page and signed declaration, contents and lists,
+glossary/abbreviations, abstract, equations, code, tables/figures/graphs,
+footnotes, references and appendices, and is within the supervisor-approved
+9,000--11,000 range.
 
 ## Reproducibility outputs
 

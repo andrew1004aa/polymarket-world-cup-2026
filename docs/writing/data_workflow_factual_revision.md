@@ -8,16 +8,17 @@ Analytics is used only for independent market-level count validation. Dune
 observations are not merged into, substituted for, or used to modify the
 canonical sample.
 
-The canonical sample contains 6,725,732 Polymarket Data API rows across 360
-markets. Independently obtained Dune Analytics market-level counts were used
-only to validate extraction completeness. Public dissertation and repository
-materials do not report market-specific reconciliation figures.
+The API returned 6,725,954 in-window rows. Canonical serialisation and SHA-256
+equality of complete API objects identified 222 cross-checkpoint repeated
+deliveries across 39 markets, leaving 6,725,732 retained records. Independently
+obtained Dune Analytics market-level counts were used only to validate
+extraction completeness: 350 of 360 counts matched exactly and Dune was one
+record higher in each of ten markets.
 
-No additional canonical trade-level deduplication based on transaction hash or
-a synthetic trade identifier is part of the final research workflow. Historical
-reports or manifests that retain temporary duplicate-development fields or
-abandoned extraction details are development artifacts and are not treated as
-the dissertation's methodology.
+The exact-response procedure is not transaction-hash deduplication and does not
+aggregate inferred economic trades, orders, or executions. All retained records
+have unique non-empty transaction hashes, but hashes were not the canonical
+deduplication key. Collection requests set `takerOnly=true` explicitly.
 
 Section 3.1 was rewritten to separate canonical data construction from external
 count validation, and to distinguish the trade, CLOB price-history, and FIFA
@@ -28,4 +29,4 @@ The current repository contains a README, stage-specific dependency files, a
 data dictionary and collection report, principal v5/v6 output files, SHA-256
 manifests with 360 trade and 360 price entries, and the complete LaTeX source.
 The fixed final submission snapshot is identified by the tag
-`v1.0.0-submission`.
+`v1.0.1-submission`.

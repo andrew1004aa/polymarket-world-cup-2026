@@ -76,9 +76,10 @@ The supervised machine-learning outcome is thirty-minute full price reversal, no
 
 ## Remaining release check
 
-The official main-text limit is 8,000--11,000 words. The reproducible static
-estimate is 9,328 words, excluding the abstract, impact statement, tables,
-references, and appendices. Upload or synchronise the `overleaf/` directory with
+The final IFTE0008-method main-text count is 10,383 words, within the
+supervisor-approved 9,000--11,000 range. It excludes the title page, signed
+declaration, contents and lists, glossary/abbreviations, abstract, equations,
+code, tables/figures/graphs, footnotes, references and appendices. Upload or synchronise the `overleaf/` directory with
 Overleaf and compile `main.tex`. Resolve only genuine LaTeX errors, missing
 references, table overflow, or layout problems; compilation must not change the
 frozen empirical values or the canonical data statement above. After visual

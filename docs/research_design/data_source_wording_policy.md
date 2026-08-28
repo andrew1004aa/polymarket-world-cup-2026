@@ -9,8 +9,8 @@ used only to validate extraction completeness. Dune observations were not
 merged into, substituted for, or used to modify the canonical Polymarket API
 sample.
 
-Public-facing dissertation and GitHub materials do not report the number or
-identity of markets with count differences, or the aggregate size of any count
-difference. Local raw QC evidence may be retained for audit but is not part of
-the public methodology narrative unless the researcher explicitly changes this
-policy.
+The final public methodology reports the verified construction and validation
+facts: 6,725,954 in-window API rows, 222 cross-checkpoint repeated complete
+objects removed, 6,725,732 retained records, and the 350-exact/10-one-record
+Dune count reconciliation. It distinguishes exact-response removal from
+transaction-hash deduplication and economic-trade aggregation.

@@ -16,7 +16,9 @@ dissertation itself.
   `2026-08-01 00:00:00 UTC` (exclusive).
 - Markets: 360 binary Polymarket contracts: 312 match contracts corresponding
   to 104 FIFA World Cup matches, plus 48 country outright-winner contracts.
-- Trades: 6,725,732 observations in the canonical research sample.
+- Trades: 6,725,954 in-window Data API rows before exact-response checking;
+  222 repeated complete API objects removed; 6,725,732 retained Data API trade
+  records in the canonical research sample.
 - Prices: 17,980,605 raw price-history observations for 720 outcome tokens at
   the highest available one-minute API fidelity, without interpolation,
   resampling, or gap filling.
@@ -27,8 +29,27 @@ independently obtained Dune Analytics market-level trade counts were used solely
 to assess the completeness of the API extraction. No Dune observations were
 incorporated into or used to modify the canonical dataset.
 
-The fixed submission version is
-[`v1.0.0-submission`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.0-submission).
+Exact-response checking serialises each complete API object in canonical key
+order and compares its SHA-256 digest. The 222 removed responses were
+cross-checkpoint repeated deliveries affecting 39 markets; no same-checkpoint
+duplicates were found. This is not transaction-hash deduplication or aggregation
+into inferred economic trades, orders, or executions. All 6,725,732 retained
+records have unique non-empty transaction hashes. Collection requests now set
+`takerOnly=true` explicitly.
+On a matched ten-record validation page, the default and explicit-parameter
+responses were byte-identical and had the same SHA-256 digest.
+
+Dune query `8139394` supplied validation counts for the 312 match contracts and
+query `8140259` for the 48 country outright contracts. The local exports were
+downloaded on 31 July 2026 at 13:52 BST. Across 360 markets, 350 counts matched
+exactly and Dune was one record higher in each of ten markets: API total
+6,725,732; Dune total 6,725,742. Dune contributed no trade-level regression
+observations. Query `8142697` was used only for the auxiliary 104-match mapping
+based on the official `world-cup_2026.xlsx` fixture source. Price histories come
+separately from the Polymarket CLOB `/prices-history` endpoint.
+
+The fixed revised submission version is
+[`v1.0.1-submission`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.1-submission).
 
 ## Repository map
 
@@ -48,9 +69,12 @@ The fixed submission version is
 
 Large raw and derived files are deliberately excluded from Git because of their
 size. Running the collection and construction scripts creates the ignored
-directories listed in `.gitignore`. The frozen, compact v5 result artifacts are
-included so that reported coefficients can be checked without downloading the
-full dataset.
+directories listed in `.gitignore`. The frozen, compact v5 and v6 result
+artifacts are included so that reported coefficients can be checked without
+downloading the full dataset. Because the large source and regression-ready
+files are not distributed here, the repository documents and audits the final
+workflow but does not claim one-command independent replication from hashes
+alone.
 
 ## Environment setup
 
@@ -113,6 +137,11 @@ python -u scripts/fetch_world_cup_data_api.py \
   --end 2026-08-01T00:00:00Z \
   --build-only
 ```
+
+The collector sends `takerOnly=true` explicitly. Canonical construction keeps
+the first complete API object and removes only later byte-equivalent complete
+objects identified by canonical serialisation and SHA-256 hashing; it does not
+deduplicate by transaction hash or aggregate inferred executions.
 
 ### 3. Partition trades and build wallet tables
 

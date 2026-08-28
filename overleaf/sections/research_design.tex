@@ -7,13 +7,13 @@
 
 \subsection{Research objective and setting}
 
-This study examines whether unusually large individual trades are associated with short-horizon movements in Polymarket-implied probabilities, whether those movements persist or reverse, and whether they improve alignment with eventual market outcomes. The design is observational: it estimates conditional associations and does not claim that a trade caused a price change, conveyed private information, or manipulated a market. The primary outcome is described as a recorded-price adjustment, and the estimated coefficients as directional price associations.
+This study examines whether unusually large individual trades are associated with short-horizon movements in Polymarket-implied probabilities, whether additional flow-aligned movement follows between minutes 5 and 15 or instead reverses, and whether prices improve alignment with eventual market outcomes. The design is observational: it estimates conditional associations and does not claim that a trade caused a price change, conveyed private information, or manipulated a market. The primary outcome is described as a recorded-price adjustment, and the estimated coefficients as directional price associations.
 
 The observation window spans 2026-06-01T00:00:00Z to 2026-08-01T00:00:00Z, with the end point excluded. The final universe consists of 360 binary markets: 312 home-win, away-win, or draw markets covering 104 FIFA World Cup matches, and 48 outright country-winner markets. The canonical trade sample contains 6,725,732 records from the public Polymarket Data API and 335,414 normalised proxy-wallet addresses. The price dataset contains 17,980,605 raw CLOB price-history points for 720 YES and NO tokens, requested at one-minute fidelity without interpolation or resampling. Match timing and outcomes come from the reviewed 104-event FIFA table. Independently obtained Dune Analytics market-level counts were used only to validate extraction completeness; Dune observations were not used to add, remove, or replace canonical trade observations.
 
 \subsection{Research questions and hypotheses}
 
-The study asks four questions. First, as a baseline check, how is signed trade flow associated with subsequent changes in a market's YES-equivalent probability? Second, and central to the dissertation, does unusually large net flow have a stronger association than ordinary net flow? Update incidence and conditional magnitude are examined as mechanism diagnostics rather than embedded in H2. Third, do large-trade-associated movements persist or reverse, and do they improve the forecast relative to the realised binary outcome? Fourth, does the association vary with time to kickoff and match phase?
+The study asks four questions. First, as a baseline check, how is signed trade flow associated with subsequent changes in a market's YES-equivalent probability? Second, and central to the dissertation, does unusually large net flow have a stronger association than ordinary net flow? Update incidence and conditional magnitude are examined as mechanism diagnostics rather than embedded in H2. Third, is large-trade flow associated with additional flow-aligned movement between minutes 5 and 15 or reversal over that interval, and do prices improve relative to the realised binary outcome? Fourth, does the association vary with time to kickoff and match phase?
 
 H1 and H2 are primary. Within that pair, H1 is a baseline validation of the signed-flow construction, while H2, together with its extensive-versus-intensive-margin decomposition, is the dissertation's main empirical contribution. H3a, H3b and RQ4 are secondary hypotheses and a research question that interpret and add heterogeneity context to the H2 result rather than stand as co-equal contributions. The corresponding hypotheses and research question are:
 
@@ -138,6 +138,12 @@ identification comes from related home-win, draw, and away-win contracts for the
 same match in the same time cell. Cells containing only one observed market do
 not identify this comparison and are excluded.
 
+These event-by-time fixed effects absorb information common to related
+contracts within the same match-time cell, thereby reducing common match-time
+confounding. They cannot eliminate contract-specific responses to
+contemporaneous match news. The resulting estimates therefore remain
+associational.
+
 The extensive margin is estimated first as a linear-probability model for any
 non-zero five-minute update and then as a market-fixed-effects logit robustness
 model. Markets without within-market outcome variation carry no finite logit
@@ -189,7 +195,7 @@ files used for the analysis after the public-source data have been collected.
 
 The repository version corresponding to this submitted dissertation is
 available at:
-\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.0-submission}.
+\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.1-submission}.
 Files retained for transparency or development history are not, merely by
 their presence, part of the final research design described in this
 dissertation.

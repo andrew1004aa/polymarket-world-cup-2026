@@ -99,7 +99,7 @@ class Client:
     ) -> list[dict[str, Any]]:
         params = {
             "market": condition_id, "start": start, "end": end,
-            "limit": limit, "offset": offset,
+            "limit": limit, "offset": offset, "takerOnly": "true",
         }
         error: Exception | None = None
         for attempt in range(self.retries + 1):
