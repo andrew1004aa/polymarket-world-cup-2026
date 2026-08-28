@@ -2,9 +2,9 @@
 
 ## Project
 
-**Title:** Whale Trades, Price Impact and Market Integrity on Polymarket  
-**Phase:** Data collection only  
-**Study interval:** `2026-06-01T00:00:00Z <= timestamp < 2026-08-01T00:00:00Z`  
+**Title:** Large Trades and Short-Horizon Price Adjustment on Polymarket: Evidence from the 2026 FIFA World Cup
+**Phase:** Data collection only
+**Study interval:** `2026-06-01T00:00:00Z <= timestamp < 2026-08-01T00:00:00Z`
 **Canonical trade source:** Polymarket Data API collected sample
 
 This report documents collection, preservation, organization and structural quality control. It contains no whale classification, price-impact estimation, return construction, regression, hypothesis test, visualization, interpretation or conclusion.
@@ -55,11 +55,12 @@ The original combined file is `trades.csv`. A compact research copy was partitio
 
 ### Canonical-source decision
 
-Trade-level data were collected from the Polymarket Data API for the predefined
-study period. Market-level trade counts were cross-checked against independently
-extracted Dune records. The reconciled Polymarket API dataset, containing
-6,725,732 trade observations across 360 markets, was used as the canonical
-research sample.
+Trade-level observations were collected directly from the Polymarket Data API
+and constitute the sole canonical trade-level dataset. After collection,
+independently obtained Dune Analytics market-level trade counts were used solely
+to assess the completeness of the API extraction. No Dune observations were
+incorporated into or used to modify the canonical dataset. The canonical sample
+contains 6,725,732 trade observations across 360 markets.
 
 ### Trade QC
 

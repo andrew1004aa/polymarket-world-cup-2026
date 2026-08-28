@@ -5,7 +5,7 @@ Release date: 2026-08-22
 
 ## Canonical data statement
 
-Trade-level data were collected from the Polymarket Data API for the predefined study period. Market-level trade counts were cross-checked against independently extracted Dune records. The reconciled Polymarket API dataset, containing 6,725,732 trade observations across 360 markets, was used as the canonical research sample.
+Trade-level observations were collected directly from the Polymarket Data API and constitute the sole canonical trade-level dataset. After collection, independently obtained Dune Analytics market-level trade counts were used solely to assess the completeness of the API extraction. No Dune observations were incorporated into or used to modify the canonical dataset. The canonical sample contains 6,725,732 trade observations across 360 markets.
 
 ## Primary empirical definition
 

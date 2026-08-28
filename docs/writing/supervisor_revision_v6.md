@@ -6,7 +6,7 @@ Generated: 2026-08-25
 
 - Documented the canonical Polymarket Data API collection: 1,000-row pages,
   recursive time-window subdivision, half-open intervals, checkpoints, complete
-  API-record identity, and the 350-exact/10-one-row Dune coverage comparison.
+  API provenance and the independent Dune market-level count-validation role.
   Development-error counts are not part of the dissertation narrative.
 - Clarified `side`, the endpoint's default `takerOnly=true` setting, and why
   transaction hash is not treated as a fill-level unique key.

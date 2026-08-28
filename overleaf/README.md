@@ -9,6 +9,7 @@ directory (`main.tex`, `sections/`, `tables/`, `figures/`) and compile
 \input{sections/impact_statement}
 \input{sections/introduction}
 \input{sections/literature_review}
+\input{sections/data}
 \input{sections/research_design}
 \input{sections/results}
 \input{sections/discussion}
@@ -76,7 +77,10 @@ rerun `scripts/audit_v3_empirical_chapter.py` and then
 compiles cleanly in Overleaf (table overflow, float placement, cross-references,
 page breaks, caption/font consistency, and now figure placement and legibility).
 
-`main.tex` now compiles with `references_verified.bib` (Harvard/`apalike` style via `natbib`). Conversion from plain author-year text to `\citep{}` keys is in progress and not yet complete across every chapter; check each chapter for remaining plain-text citations before submission. Do not add a workbook row marked `Needs verification`, `Working paper`, or `Background/non-academic` as a `.bib` entry without checking the latest source metadata first.
+`main.tex` compiles with `references_verified.bib` (Harvard/`apalike` style via
+`natbib`). Do not add a workbook row marked `Needs verification`, `Working
+paper`, or `Background/non-academic` as a `.bib` entry without checking the
+latest source metadata first.
 
 Local static validation confirms balanced braces, unique labels and resolvable
 supplementary market-integrity inputs. No LaTeX compiler is installed in the current local environment,

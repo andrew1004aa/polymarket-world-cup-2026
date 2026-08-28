@@ -21,18 +21,14 @@ dissertation itself.
   the highest available one-minute API fidelity, without interpolation,
   resampling, or gap filling.
 
-Trade-level data were collected from the Polymarket Data API separately by
-condition ID. Requests used 1,000-record offset pages and half-open time
-intervals, `[start,end)`. A saturated interval was divided recursively before
-collection continued, and every successful request was checkpointed. Summed
-market-level counts were cross-checked against independently extracted Dune
-records: 350 markets agreed exactly and Dune had one additional record in each
-of ten markets. The 6,725,732 Polymarket API observations remain the canonical
-sample; Dune records were not appended.
+Trade-level observations were collected directly from the Polymarket Data API
+and constitute the sole canonical trade-level dataset. After collection,
+independently obtained Dune Analytics market-level trade counts were used solely
+to assess the completeness of the API extraction. No Dune observations were
+incorporated into or used to modify the canonical dataset.
 
-The requests did not override the endpoint's default `takerOnly=true` setting.
-The API `side` field is retained as BUY/SELL and combined with the outcome token
-to form YES-equivalent direction; the analysis does not infer maker/taker roles.
+The fixed submission version is
+[`v1.0.0-submission`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.0-submission).
 
 ## Repository map
 
@@ -62,7 +58,7 @@ Python 3.11 or 3.12 is recommended. Use separate environments for collection,
 estimation, and machine learning.
 
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/polymarket-world-cup-2026.git
+git clone https://github.com/andrew1004aa/polymarket-world-cup-2026.git
 cd polymarket-world-cup-2026
 
 python -m venv .venv-collection

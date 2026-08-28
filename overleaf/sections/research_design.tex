@@ -7,9 +7,9 @@
 
 \subsection{Research objective and setting}
 
-This study examines whether unusually large individual trades are associated with short-horizon movements in Polymarket-implied probabilities, whether those movements persist or reverse, and whether they improve alignment with eventual market outcomes. The design is observational: it estimates conditional associations and does not claim that a trade caused a price change, conveyed private information, or manipulated a market. Throughout this dissertation, ``price impact'' denotes a reduced-form short-horizon conditional association between signed trading flow and subsequent market prices, estimated with market and calendar-hour fixed effects, rather than a causal structural price-impact estimate in the sense of a controlled or instrumented design; the term is retained because it is the vocabulary the underlying microstructure literature uses, not because the design identifies a causal effect.
+This study examines whether unusually large individual trades are associated with short-horizon movements in Polymarket-implied probabilities, whether those movements persist or reverse, and whether they improve alignment with eventual market outcomes. The design is observational: it estimates conditional associations and does not claim that a trade caused a price change, conveyed private information, or manipulated a market. The primary outcome is described as a recorded-price adjustment, and the estimated coefficients as directional price associations.
 
-The observation window spans 2026-06-01T00:00:00Z to 2026-08-01T00:00:00Z, with the end point excluded. The final universe consists of 360 binary markets: 312 home-win, away-win, or draw markets covering 104 FIFA World Cup matches, and 48 outright country-winner markets. The canonical trade sample contains 6,725,732 records from the public Polymarket Data API and 335,414 normalised proxy-wallet addresses. The price dataset contains 17,980,605 raw CLOB price-history points for 720 YES and NO tokens, requested at one-minute fidelity without interpolation or resampling. Match timing and outcomes come from the reviewed 104-event FIFA table. Dune is not used to add, remove, or replace canonical trade observations.
+The observation window spans 2026-06-01T00:00:00Z to 2026-08-01T00:00:00Z, with the end point excluded. The final universe consists of 360 binary markets: 312 home-win, away-win, or draw markets covering 104 FIFA World Cup matches, and 48 outright country-winner markets. The canonical trade sample contains 6,725,732 records from the public Polymarket Data API and 335,414 normalised proxy-wallet addresses. The price dataset contains 17,980,605 raw CLOB price-history points for 720 YES and NO tokens, requested at one-minute fidelity without interpolation or resampling. Match timing and outcomes come from the reviewed 104-event FIFA table. Independently obtained Dune Analytics market-level counts were used only to validate extraction completeness; Dune observations were not used to add, remove, or replace canonical trade observations.
 
 \subsection{Research questions and hypotheses}
 
@@ -60,8 +60,8 @@ pre-trade quote. The primary dependent variable is therefore termed a
 recorded-price adjustment. A robustness series instead uses the last executed
 YES-equivalent trade price strictly before the focal minute and the first
 executed trade price at or after the target horizon, with 60-, 300-, and
-900-second matching tolerances. The focal minute is excluded from the executed-
-price baseline.
+900-second matching tolerances. The focal minute is excluded from the
+executed-price baseline.
 
 For each binary market, trade value is executed token price multiplied by
 shares. The primary expanding-history threshold for UTC day $d$ is the linearly
@@ -73,7 +73,7 @@ threshold; ties are included. Both definitions are past-only, so a trade is
 never classified using later observations. Models are estimated separately and
 on their common support. Past-only P95, P97.5, and P99.5 thresholds test whether
 the finding depends on the P99 boundary. Signed-log flow is also replaced by
-\texttt{asinh} flow and winsorised raw flow scaled in $1,000 units;
+\texttt{asinh} flow and winsorised raw flow scaled in \$1,000 units;
 standardised and common-value effects permit comparison despite the different
 sparsity and scale of the large and ordinary components. Classification occurs before applying YES-equivalent
 direction and does not represent wallet wealth, ownership, institutional status,
@@ -179,18 +179,23 @@ establish causality. The empirical language therefore remains associative.
 
 \subsection{Reproducibility}
 
-Analytical scripts read immutable inputs from \texttt{regression\_ready/} and write versioned outputs to separate, immutable analysis directories. Every filtering rule, time horizon, matching tolerance, threshold, transformation, and model count is logged. The earlier wallet-based artifacts described above remain unchanged as an audit trail and secondary high-activity-wallet analysis. The data-collection report and data dictionary remain the authority for source coverage and field definitions.
+The public repository documents the final analysis workflow and contains a
+README, stage-specific dependency files, the data dictionary and collection
+report, analysis scripts, the principal non-confidential v5 and v6 output
+files, SHA-256 manifests for 360 trade partitions and 360 price partitions,
+and the complete LaTeX source. Large source and regression-ready datasets are
+not redistributed in the repository. Their hash manifests identify the local
+files used for the analysis after the public-source data have been collected.
 
-The complete reproducibility package, including the data-collection,
-sample-construction, regression, machine-learning, and audit code, is available
-at the following public repository:
-\url{https://github.com/andrew1004aa/polymarket-world-cup-2026}.
-The fixed snapshot corresponding to this revision is release
-\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v0.3.1-supervisor-revision}.
-The final submitted version will receive a separate submission tag.
+The repository version corresponding to this submitted dissertation is
+available at:
+\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.0-submission}.
+Files retained for transparency or development history are not, merely by
+their presence, part of the final research design described in this
+dissertation.
 
-Detailed specifications for the supplementary concentration, reversal-
-prediction, wallet-sequence, and anomaly-screening analyses are reported in
+Detailed specifications for the supplementary concentration,
+reversal-prediction, wallet-sequence, and anomaly-screening analyses are reported in
 Appendix~\ref{sec:supplementary-integrity-methods}. Keeping those specifications
 outside the main chapter preserves the distinction between the primary H1--H3
 design and exploratory behavioural or integrity analyses.

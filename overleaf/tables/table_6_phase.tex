@@ -2,8 +2,9 @@
 \centering
 \caption{Pre-/post-kickoff phase contrasts (RQ4)}
 \label{tab:phase}
-\small
-\begin{tabular}{p{0.42\textwidth}rrrr}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}p{0.39\linewidth}rrrr@{}}
 \hline
 Contrast & Estimate & SE & 95\% CI & $p$-value \\
 \hline
@@ -14,6 +15,12 @@ Post-minus-prematch large coefficient & 0.000416 & 0.000118 & [0.000182, 0.00064
 Post-minus-prematch ordinary coefficient & 0.000478 & 0.000131 & [0.000218, 0.000738] & $<0.001$ \\
 Difference-in-differences: change in large-minus-ordinary gap & -0.000062 & 0.000183 & [-0.000424, 0.000300] & 0.734 \\
 \hline
-\multicolumn{5}{p{0.95\textwidth}}{\footnotesize Notes: The pooled five-minute sample contains 794,178 observations. Models use common controls, market and calendar-hour fixed effects, and CRV1 standard errors clustered by 104 events. Post-kickoff means before recorded resolution and is not necessarily purely in-play.}
-\end{tabular}
+\end{tabular*}
+\par\vspace{3pt}
+\begin{minipage}{\linewidth}
+\footnotesize Notes: The pooled five-minute sample contains 794,178
+observations. Models use common controls, market and calendar-hour fixed
+effects, and CRV1 standard errors clustered by 104 events. Post-kickoff means
+before recorded resolution and is not necessarily purely in-play.
+\end{minipage}
 \end{table}
