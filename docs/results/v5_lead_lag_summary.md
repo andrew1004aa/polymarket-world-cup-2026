@@ -24,8 +24,8 @@ The contrast became positive immediately after the flow window:
 
 The +1, +5, and +15 minute results survive Holm adjustment under both past-only
 P99 definitions. At +30 minutes, the expanding result passes the 5% threshold
-but the rolling result does not. Persistence to 30 minutes is therefore not
-treated as robust across definitions.
+but the rolling result does not. The positive association at the 30-minute
+horizon is therefore not treated as robust across definitions.
 
 ## Interpretation
 
@@ -48,4 +48,3 @@ statistical inference.
 - Model runner: `scripts/run_v5_lead_lag.py`
 - Panel: `regression_inputs/v5/lead_lag/lead_lag_panel.csv.gz`
 - Results: `regression_results/v5/lead_lag/lead_lag_contrasts.csv`
-

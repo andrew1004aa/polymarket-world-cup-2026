@@ -46,8 +46,8 @@ flow magnitude and price-update incidence, but does **not** reproduce the LPM
 claim that large flow has a stronger extensive-margin association than ordinary
 flow. The differential extensive-margin conclusion must consequently be
 presented as model-sensitive. This does not overturn the directional
-price-change result, which uses a continuous outcome and survives event-time
-fixed effects.
+price-change result, which uses a continuous outcome and remains positive under
+event-time fixed-effect specifications.
 
 ## Reproducibility
 
@@ -56,4 +56,3 @@ fixed effects.
 - Event-time results: `regression_results/v5/event_time_fe/`
 - Binary runner: `scripts/run_v5_binary_fe_models.py`
 - Stable logit results: `regression_results/v5/binary_fe/`
-

@@ -55,7 +55,7 @@ for label,cells in grid.items():
     for i in range(5):
         a,b=cells.get(i,('','')); vals.append(a);ses.append(b)
     L += [label+' & '+' & '.join(vals)+r' \\', ' & '+' & '.join(ses)+r' \\']
-L += [r'\hline',r'\multicolumn{6}{p{0.94\textwidth}}{\footnotesize Notes: Subsequent movement is $p_{t+15}-p_{t+5}$ conditional on the initial response. Positive Brier improvement denotes movement closer to the resolved outcome. All models use 744,470 observations and event-clustered CRV1 standard errors.}',r'\end{tabular}',r'\end{table}'];write('table_3_h3.tex',L)
+L += [r'\hline',r'\multicolumn{6}{p{0.94\textwidth}}{\footnotesize Notes: The dependent variable in the first two columns is the unadjusted subsequent price change $p_{t+15}-p_{t+5}$; signed-flow regressors encode trade direction. The main model does not condition on an observed initial price update. Positive Brier improvement denotes movement closer to the resolved outcome. All models use 744,470 observations and event-clustered CRV1 standard errors.}',r'\end{tabular}',r'\end{table}'];write('table_3_h3.tex',L)
 
 m=read('robustness_results/v3/h4/h4_timing_marginal_effects.csv'); j=read('robustness_results/v3/h4/h4_timing_joint_tests.csv')
 bands=[('gt_24h','$>24$ hours'),('12_to_24h','12--24 hours'),('6_to_12h','6--12 hours'),('1_to_6h','1--6 hours'),('last_60m','Final 60 minutes')]

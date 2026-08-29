@@ -49,7 +49,7 @@ based on the official `world-cup_2026.xlsx` fixture source. Price histories come
 separately from the Polymarket CLOB `/prices-history` endpoint.
 
 The fixed final submission version is
-[`v1.0.3-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.3-submission-final).
+[`v1.0.4-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.4-submission-final).
 
 ## Repository map
 
@@ -291,7 +291,7 @@ the baseline.
 ## Citation and version matching
 
 The submitted dissertation cites the immutable
-[`v1.0.3-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.3-submission-final)
+[`v1.0.4-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.4-submission-final)
 snapshot. This tag and the dissertation source refer to the same frozen
 version; the PDF compiled in Overleaf should be checked against that source
 before submission.

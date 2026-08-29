@@ -15,10 +15,10 @@ The observation window spans 2026-06-01T00:00:00Z to 2026-08-01T00:00:00Z, with 
 
 The study asks four questions. First, as a baseline check, how is signed trade flow associated with subsequent changes in a market's YES-equivalent probability? Second, and central to the dissertation, does unusually large net flow have a stronger association than ordinary net flow? Update incidence and conditional magnitude are examined as mechanism diagnostics rather than embedded in H2. Third, is large-trade flow associated with additional flow-aligned movement between minutes 5 and 15 or reversal over that interval, and do prices improve relative to the realised binary outcome? Fourth, does the association vary with time to kickoff and match phase?
 
-H1 and H2 are primary. Within that pair, H1 is a baseline validation of the signed-flow construction, while H2, together with its extensive-versus-intensive-margin decomposition, is the dissertation's main empirical contribution. H3a, H3b and RQ4 are secondary hypotheses and a research question that interpret and add heterogeneity context to the H2 result rather than stand as co-equal contributions. The corresponding hypotheses and research question are:
+H1 and H2 are primary. Within that pair, H1 provides a baseline sanity check for the signed-flow construction, while H2, together with its extensive-versus-intensive-margin decomposition, is the dissertation's main empirical contribution. H3a, H3b and RQ4 are secondary hypotheses and a research question that interpret and add heterogeneity context to the H2 result rather than stand as co-equal contributions. The corresponding hypotheses and research question are:
 
 \begin{description}
-  \item[H1 (baseline).] Greater signed total trade flow is associated with a short-horizon probability change in the same direction. This result validates the signed-flow construction; it is not, by itself, the dissertation's central finding.
+  \item[H1 (baseline).] Greater signed total trade flow is associated with a short-horizon probability change in the same direction. This serves as a baseline sanity check for the directional-flow measure; it is not, by itself, the dissertation's central finding.
   \item[H2 (primary contribution).] Conditional on the common controls and fixed effects, signed flow from individual trades classified by a past-only, market-specific P99 threshold has a larger five-minute directional-price association than signed flow from ordinary trades. Whether the difference operates through update incidence or conditional update magnitude is evaluated as a mechanism decomposition rather than built into the hypothesis.
   \item[H3a.] Large-trade flow is associated with subsequent same-direction continuation from minute five to minute fifteen rather than reversal over that later interval.
   \item[H3b.] Large-trade-associated price movements improve forecast accuracy relative to the eventual resolved outcome, measured by Brier-score improvement, relative to ordinary-trade-associated movements.
@@ -102,15 +102,28 @@ within each threshold definition. A significant negative-horizon coefficient
 would indicate anticipation, price-chasing, shared information, or residual
 timing confounding rather than an effect of the later flow.
 
-For $h_2>h_1$, subsequent movement is
+The primary H3a outcome is the unadjusted subsequent price change from minute 5
+to minute 15,
 
 \begin{equation}
-  \text{Reversal}_{m,t}(h_1,h_2)=
-  \operatorname{sign}(\text{NetSignedFlow}_{m,t})
-  \left(p_{m,t+h_2}-p_{m,t+h_1}\right).
+  \Delta p^{5\rightarrow15}_{m,t}=p_{m,t+15}-p_{m,t+5}.
 \end{equation}
 
-A negative value denotes movement against the initial flow direction. A positive value is termed subsequent same-direction continuation, not strict persistence of the initial price movement: it can reflect delayed adjustment when no initial update occurred. A separate descriptive specification therefore conditions on a non-zero initial movement from minute zero to minute five. This conditional sample is outcome-selected and is not used as the primary H3a test. Reversal is not, by itself, proof of manipulation. Let $y_m\in\{0,1\}$ be the resolved outcome. Forecast improvement is measured by the change in Brier loss,
+This outcome is regressed on signed-log large and ordinary flow measured in the
+initiating minute, the initial zero-to-five-minute price change, the baseline
+price, lagged 30-minute price change, lagged volume, and minutes to kickoff,
+with market and UTC calendar-hour fixed effects and event-clustered covariance.
+A positive coefficient on a signed-flow component means that positive flow is
+associated with a later price increase and negative flow with a later price
+decrease on average; a negative coefficient indicates a reversal tendency.
+The positive case is termed subsequent same-direction continuation, not strict
+persistence of an observed initial movement, because the primary model does not
+condition on a non-zero initial update and may therefore capture delayed
+adjustment. A separate descriptive specification conditions on a non-zero
+movement from minute zero to minute five. This conditional sample is
+outcome-selected and is not used as the primary H3a test. Reversal is not, by
+itself, proof of manipulation. Let $y_m\in\{0,1\}$ be the resolved outcome.
+Forecast improvement is measured by the change in Brier loss,
 
 \begin{equation}
   \text{BrierImprovement}_{m,t}(h)=
@@ -195,7 +208,7 @@ files used for the analysis after the public-source data have been collected.
 
 The repository version corresponding to this submitted dissertation is
 available at:
-\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.3-submission-final}.
+\url{https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.4-submission-final}.
 Files retained for transparency or development history are not, merely by
 their presence, part of the final research design described in this
 dissertation.

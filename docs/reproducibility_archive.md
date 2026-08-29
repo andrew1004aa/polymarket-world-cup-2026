@@ -1,6 +1,6 @@
 # Fixed reproducibility archive contents
 
-The `v1.0.3-submission-final` tag is the fixed repository snapshot corresponding
+The `v1.0.4-submission-final` tag is the fixed repository snapshot corresponding
 to the submitted dissertation source. It contains the complete LaTeX source,
 collection and analysis scripts, stage-specific dependency files, data
 dictionary, collection report, compact principal v5/v6 model outputs, and
