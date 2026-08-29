@@ -48,8 +48,8 @@ observations. Query `8142697` was used only for the auxiliary 104-match mapping
 based on the official `world-cup_2026.xlsx` fixture source. Price histories come
 separately from the Polymarket CLOB `/prices-history` endpoint.
 
-The fixed revised submission version is
-[`v1.0.2-submission`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.2-submission).
+The fixed final submission version is
+[`v1.0.3-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.3-submission-final).
 
 ## Repository map
 
@@ -264,8 +264,8 @@ claimed to establish manipulation.
 ### 8. Compile the dissertation
 
 Upload `overleaf/` to Overleaf and compile `main.tex`, or use a local LaTeX
-installation. The final PDF should be archived with the exact code commit used
-for submission.
+installation. The submitted PDF should be archived together with the tagged
+source snapshot cited in the dissertation.
 
 ## Price timing
 
@@ -290,8 +290,8 @@ the baseline.
 
 ## Citation and version matching
 
-The submitted dissertation should cite a Git commit hash or a tagged GitHub
-release. Create the release only after the final Overleaf PDF, source, scripts,
-result files, dependency versions, data dictionary, and collection report have
-all been checked. The tag and dissertation must refer to the same frozen
-version.
+The submitted dissertation cites the immutable
+[`v1.0.3-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.3-submission-final)
+snapshot. This tag and the dissertation source refer to the same frozen
+version; the PDF compiled in Overleaf should be checked against that source
+before submission.

@@ -1,11 +1,11 @@
 # Dissertation empirical release v5
 
-Release status: **analysis complete; dissertation text updated; Overleaf compilation pending**  
+Release status: **analysis complete; empirical outputs frozen**  
 Release date: 2026-08-22
 
 ## Canonical data statement
 
-Trade-level observations were collected directly from the Polymarket Data API and constitute the sole canonical trade-level dataset. After collection, independently obtained Dune Analytics market-level trade counts were used solely to assess the completeness of the API extraction. No Dune observations were incorporated into or used to modify the canonical dataset. The canonical sample contains 6,725,732 trade observations across 360 markets.
+Trade-level observations were collected directly from the Polymarket Data API and constitute the sole canonical trade-level dataset. After collection, independently obtained Dune Analytics market-level trade counts were used solely to assess the completeness of the API extraction. No Dune observations were incorporated into or used to modify the canonical dataset. The canonical sample contains 6,725,732 retained Data API trade records across 360 markets.
 
 ## Primary empirical definition
 
@@ -26,7 +26,7 @@ Trade-level observations were collected directly from the Polymarket Data API an
 | Lead placebos (-15, -5, -1 minutes) | Holm-adjusted `p=1` | Holm-adjusted `p=1` | No detectable pre-trend |
 | Post path (+1, +5, +15 minutes) | Positive, Holm `<0.001` | Positive, Holm `<0.001` | Robust short-horizon temporal ordering |
 | +30 minutes | Holm `p=0.0385` | Holm `p=0.0674` | Not robust across definitions |
-| Event-by-minute / event-by-five-minute FE | Positive, `p<0.001` | Positive, `p<0.001` | Survives shared event-time controls |
+| Event-by-minute / event-by-five-minute FE | Positive, `p<0.001` | Positive, `p<0.001` | Remains positive under shared event-time controls |
 
 ## Canonical v5 inputs
 
@@ -74,13 +74,13 @@ Trade-level observations were collected directly from the Polymarket Data API an
 
 The supervised machine-learning outcome is thirty-minute full price reversal, not manipulation. Unsupervised scores prioritise unusual observations for contextual review and do not constitute verified misconduct labels. All regression results are conditional associations rather than causal structural price-impact estimates.
 
-## Remaining release check
+## Submission consistency note
 
-The final IFTE0008-method main-text count is 10,460 words, within the
+The final IFTE0008-method main-text count is 10,464 words, within the
 supervisor-approved 9,000--11,000 range. It excludes the title page, signed
 declaration, contents and lists, glossary/abbreviations, abstract, equations,
-code, tables/figures/graphs, footnotes, references and appendices. Upload or synchronise the `overleaf/` directory with
-Overleaf and compile `main.tex`. Resolve only genuine LaTeX errors, missing
-references, table overflow, or layout problems; compilation must not change the
-frozen empirical values or the canonical data statement above. After visual
-approval, archive the exact PDF, code and source in one tagged GitHub release.
+code, tables/figures/graphs, footnotes, references and appendices. The submitted
+source intentionally excludes the Declaration. Compile `overleaf/main.tex` in
+Overleaf and perform final visual QA without changing the frozen empirical
+values or the canonical data statement above. The immutable repository snapshot
+is identified by `v1.0.3-submission-final`.

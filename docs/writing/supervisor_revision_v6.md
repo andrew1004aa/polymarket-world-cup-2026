@@ -10,8 +10,8 @@ Generated: 2026-08-25
   Development-error counts are not part of the dissertation narrative.
 - Clarified `side`, the endpoint's default `takerOnly=true` setting, and why
   transaction hash is not treated as a fill-level unique key.
-- Added the full GitHub URL using `xurl` for A4-safe wrapping; final submission
-  will use a fixed release tag.
+- Added the full GitHub URL using `xurl` for A4-safe wrapping; the submitted
+  source cites the fixed `v1.0.3-submission-final` release tag.
 - Described CLOB outcomes as recorded prices and added an executed-trade-price
   robustness test that excludes the focal minute from the baseline.
 - Reported strict timestamp-gap distributions.
@@ -53,7 +53,7 @@ Generated: 2026-08-25
 
 ## Word-count check
 
-The final IFTE0008-method count is 10,460 words for the seven main chapters.
+The final IFTE0008-method count is 10,464 words for the seven main chapters.
 The count excludes the title page and signed declaration, contents and lists,
 glossary/abbreviations, abstract, equations, code, tables/figures/graphs,
 footnotes, references and appendices, and is within the supervisor-approved

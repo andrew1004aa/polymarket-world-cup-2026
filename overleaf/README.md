@@ -88,6 +88,6 @@ Local static validation confirms balanced braces, unique labels and resolvable
 supplementary market-integrity inputs. No LaTeX compiler is installed in the current local environment,
 so the authoritative compile and visual QA must still be completed in Overleaf.
 The Abstract, Discussion and Conclusion have now been aligned with the expanded
-market-integrity evidence. The IFTE0008-method main-text count is 10,460 words,
+market-integrity evidence. The IFTE0008-method main-text count is 10,464 words,
 excluding the abstract and the other handbook exclusions implemented in
 `scripts/count_tex_words.rb`; this is within the supervisor-approved 9,000--11,000 range.
