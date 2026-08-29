@@ -22,4 +22,8 @@ was changed.
 H1 is now described as a baseline sanity check for the directional-flow
 measure, rather than as formally validating the construction. The intended new
 submission tag is `v1.0.4-submission-final`; its full version identifiers are
-recorded after the substantive content is committed.
+recorded using a two-commit workflow. The substantive content commit is
+`1a1e3fbde8541a930416adbd6faa7dde9aa6a1fa`. The tag points to the subsequent
+metadata-only commit that inserts this SHA into the dissertation and release
+documentation, avoiding the impossible claim that a commit contains its own
+identifier.

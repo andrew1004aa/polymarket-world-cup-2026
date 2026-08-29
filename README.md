@@ -50,6 +50,10 @@ separately from the Polymarket CLOB `/prices-history` endpoint.
 
 The fixed final submission version is
 [`v1.0.4-submission-final`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.4-submission-final).
+The substantive dissertation content is frozen in commit
+`1a1e3fbde8541a930416adbd6faa7dde9aa6a1fa`. The tag points to the subsequent
+metadata-only commit that records this SHA in the tracked dissertation and
+release documentation; no empirical file or result changes in that commit.
 
 ## Repository map
 

@@ -76,7 +76,7 @@ The supervised machine-learning outcome is thirty-minute full price reversal, no
 
 ## Submission consistency note
 
-The final IFTE0008-method main-text count is 10,376 words, within the
+The final IFTE0008-method main-text count is 10,410 words, within the
 supervisor-approved 9,000--11,000 range. It excludes the title page, signed
 declaration, contents and lists, glossary/abbreviations, abstract, equations,
 code, tables/figures/graphs, footnotes, references and appendices. The submitted
