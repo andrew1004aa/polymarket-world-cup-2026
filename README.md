@@ -49,7 +49,7 @@ based on the official `world-cup_2026.xlsx` fixture source. Price histories come
 separately from the Polymarket CLOB `/prices-history` endpoint.
 
 The fixed revised submission version is
-[`v1.0.1-submission`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.1-submission).
+[`v1.0.2-submission`](https://github.com/andrew1004aa/polymarket-world-cup-2026/tree/v1.0.2-submission).
 
 ## Repository map
 

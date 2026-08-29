@@ -29,4 +29,4 @@ The current repository contains a README, stage-specific dependency files, a
 data dictionary and collection report, principal v5/v6 output files, SHA-256
 manifests with 360 trade and 360 price entries, and the complete LaTeX source.
 The fixed final submission snapshot is identified by the tag
-`v1.0.1-submission`.
+`v1.0.2-submission`.

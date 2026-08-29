@@ -6,8 +6,9 @@
 
 \subsection{Data sources and canonical trade sample}
 
-This dissertation draws on three distinct public sources for trades, prices,
-and match information. Trade-level observations were collected directly from
+This dissertation draws on three primary public data sources for trades,
+prices, and match information, with Dune Analytics used separately for external
+market-level count validation. Trade-level observations were collected directly from
 the Polymarket Data API and constitute the sole canonical trade-level dataset.
 After collection, independently obtained Dune Analytics market-level trade
 counts were used solely to assess the completeness of the API extraction. No
@@ -34,7 +35,8 @@ sample; it was not used as a deduplication or execution-aggregation rule.
 
 Completeness was assessed separately using Dune Analytics query 8139394 for
 the 312 match contracts and query 8140259 for the 48 country outright
-contracts. Across all 360 markets, 350 API and Dune counts agreed exactly;
+contracts; the local query exports were downloaded on 31 July 2026. Across all
+360 markets, 350 API and Dune counts agreed exactly;
 Dune reported one additional record in each of ten markets. The corresponding
 totals were 6,725,732 canonical API records and 6,725,742 Dune records, an
 aggregate difference of ten. Dune served only as an external market-level

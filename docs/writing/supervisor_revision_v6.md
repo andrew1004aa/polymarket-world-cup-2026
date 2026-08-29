@@ -53,7 +53,7 @@ Generated: 2026-08-25
 
 ## Word-count check
 
-The final IFTE0008-method count is 10,383 words for the seven main chapters.
+The final IFTE0008-method count is 10,460 words for the seven main chapters.
 The count excludes the title page and signed declaration, contents and lists,
 glossary/abbreviations, abstract, equations, code, tables/figures/graphs,
 footnotes, references and appendices, and is within the supervisor-approved

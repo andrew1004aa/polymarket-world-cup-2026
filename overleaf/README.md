@@ -6,7 +6,7 @@ directory (`main.tex`, `sections/`, `tables/`, `figures/`) and compile
 
 ```tex
 \input{sections/abstract}
-\input{sections/impact_statement}
+\input{sections/acknowledgements}
 \input{sections/introduction}
 \input{sections/literature_review}
 \input{sections/data}
@@ -14,6 +14,8 @@ directory (`main.tex`, `sections/`, `tables/`, `figures/`) and compile
 \input{sections/results}
 \input{sections/discussion}
 \input{sections/conclusion}
+\bibliographystyle{apalike}
+\bibliography{references_verified}
 \appendix
 \input{sections/appendix_robustness}
 ```
@@ -86,6 +88,6 @@ Local static validation confirms balanced braces, unique labels and resolvable
 supplementary market-integrity inputs. No LaTeX compiler is installed in the current local environment,
 so the authoritative compile and visual QA must still be completed in Overleaf.
 The Abstract, Discussion and Conclusion have now been aligned with the expanded
-market-integrity evidence. The IFTE0008-method main-text count is 10,383 words,
+market-integrity evidence. The IFTE0008-method main-text count is 10,460 words,
 excluding the abstract and the other handbook exclusions implemented in
 `scripts/count_tex_words.rb`; this is within the supervisor-approved 9,000--11,000 range.

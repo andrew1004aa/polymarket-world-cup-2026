@@ -1,6 +1,6 @@
 # Fixed reproducibility archive contents
 
-The `v1.0.1-submission` tag is the fixed repository snapshot corresponding to
+The `v1.0.2-submission` tag is the fixed repository snapshot corresponding to
 the revised dissertation source. It contains the complete LaTeX source,
 collection and analysis scripts, stage-specific dependency files, data
 dictionary, collection report, compact principal v5/v6 model outputs, and
