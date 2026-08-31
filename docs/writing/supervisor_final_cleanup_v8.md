@@ -1,5 +1,9 @@
 # Supervisor final cleanup v8
 
+Historical note: this file records the superseded
+`v1.0.5-submission-final` release. The current submission release is documented
+separately as `v1.0.6-submission-final`.
+
 Date: 2026-08-31
 
 This narrow revision qualifies the H3a decision, replaces the remaining

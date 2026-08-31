@@ -76,11 +76,12 @@ The supervised machine-learning outcome is thirty-minute full price reversal, no
 
 ## Submission consistency note
 
-The final IFTE0008-method main-text count is 10,493 words, within the
-supervisor-approved 9,000--11,000 range. It excludes the title page, signed
+The final IFTE0008-method main-text count is 9,746 words, below the official
+10,000-word limit. It excludes the title page, signed
 declaration, contents and lists, glossary/abbreviations, abstract, equations,
 code, tables/figures/graphs, footnotes, references and appendices. The submitted
-source intentionally excludes the Declaration. Compile `overleaf/main.tex` in
+source does not use the separate LaTeX Declaration section because the external
+submission cover contains the signed declaration. Compile `overleaf/main.tex` in
 Overleaf and perform final visual QA without changing the frozen empirical
 values or the canonical data statement above. The immutable repository snapshot
-is identified by `v1.0.5-submission-final`.
+is identified by `v1.0.6-submission-final`.

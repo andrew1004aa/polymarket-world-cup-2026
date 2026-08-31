@@ -12,6 +12,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
+\usepackage{pdfpages}       % Inserts the official submission cover page
 \usepackage{eso-pic}        % Required for UCL cover header/footer
 \usepackage{caption}
 \usepackage{booktabs}
@@ -45,6 +46,14 @@
 \begin{document}
 
 % =========================================================
+% OFFICIAL SUBMISSION COVER PAGE
+% =========================================================
+
+\input{sections/submission_cover}
+
+% The official cover is excluded from the dissertation page count.
+
+% =========================================================
 % UCL TITLE PAGE
 % =========================================================
 
@@ -68,6 +77,9 @@
 
 \begin{titlepage}
 
+% Count the dissertation title page as page 1. The page number is visually
+% suppressed here, and the Abstract continues as page 2.
+\setcounter{page}{1}
 \thispagestyle{empty}
 
 \begin{center}
@@ -94,10 +106,7 @@ Evidence from the 2026 FIFA World Cup
 
 \vspace{1.7cm}
 
-
-
 \vspace{1.35cm}
-
 
 \vspace{0.35cm}
 
