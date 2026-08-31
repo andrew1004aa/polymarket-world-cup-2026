@@ -1,18 +1,11 @@
 # Fixed reproducibility archive contents
 
-The `v1.0.4-submission-final` tag is the fixed repository snapshot corresponding
+The `v1.0.5-submission-final` tag is the fixed repository snapshot corresponding
 to the submitted dissertation source. It contains the complete LaTeX source,
 collection and analysis scripts, stage-specific dependency files, data
 dictionary, collection report, compact principal v5/v6 model outputs, and
 SHA-256 manifests for the 360 local trade partitions and 360 local price
 partitions.
-
-The substantive content commit is
-`1a1e3fbde8541a930416adbd6faa7dde9aa6a1fa`. The tag points to the subsequent
-metadata-only commit that inserts this identifier into tracked source and
-documentation. This two-commit sequence avoids falsely claiming that a Git
-commit contains its own SHA; the metadata-only commit changes no empirical
-file, estimate, table, or figure.
 
 Large source, regression-ready and model-input files are not redistributed in
 Git because of their size. The hash manifests identify the local files used in

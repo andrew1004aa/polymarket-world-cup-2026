@@ -49,7 +49,7 @@ h3=read('robustness_results/v3/h3/h3_coefficients.csv')
 spec=[('Total signed flow','R_TOTAL','signed_log_total_net_flow',0),('P99 large flow','R_P99_SPLIT','p99_signed_log_large_net_flow',1),('Ordinary flow','R_P99_SPLIT','p99_signed_log_ordinary_net_flow',1),('Absolute P99 large flow','B5_P99_SPLIT','p99_log_abs_large_net_flow',2),('Absolute P99 large flow','B15_P99_SPLIT','p99_log_abs_large_net_flow',3),('Absolute P99 large flow','B5_15_P99_SPLIT','p99_log_abs_large_net_flow',4),('Absolute ordinary flow','B5_P99_SPLIT','p99_log_abs_ordinary_net_flow',2),('Absolute ordinary flow','B15_P99_SPLIT','p99_log_abs_ordinary_net_flow',3),('Absolute ordinary flow','B5_15_P99_SPLIT','p99_log_abs_ordinary_net_flow',4)]
 grid={}
 for label,m,t,col in spec: grid.setdefault(label,{})[col]=cell(row(h3,model=m,term=t))
-L=[r'\begin{table}[htbp]',r'\centering',r'\caption{Persistence and forecast-improvement tests (H3)}',r'\label{tab:h3}',r'\scriptsize',r'\begin{tabular}{lccccc}',r'\hline',r' & Subsequent total & Subsequent split & Brier 0--5 & Brier 0--15 & Brier 5--15 \\',r'\hline']
+L=[r'\begin{table}[htbp]',r'\centering',r'\caption{Subsequent continuation (H3a) and forecast-improvement (H3b) tests}',r'\label{tab:h3}',r'\footnotesize',r'\setlength{\tabcolsep}{3pt}',r'\begin{tabular}{lccccc}',r'\hline',r' & Subsequent total & Subsequent split & Brier 0--5 & Brier 0--15 & Brier 5--15 \\',r'\hline']
 for label,cells in grid.items():
     vals=[];ses=[]
     for i in range(5):
