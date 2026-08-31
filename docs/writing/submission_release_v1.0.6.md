@@ -12,5 +12,6 @@ The final IFTE0008-method main-body count is 9,746 words, below the official
 10,000-word limit. No empirical estimate, table, figure, model output, data
 provenance statement, reference, or appendix was changed.
 
-The substantive content SHA is recorded in a metadata-only follow-up commit
-using the established transparent release workflow.
+The substantive content SHA is
+`ae3b75488c8626e28c1dd91587332fed232bb6ae`. The tag points to the subsequent
+metadata-only follow-up commit, which changes no empirical file or result.
